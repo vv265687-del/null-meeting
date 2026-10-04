@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PROJECT-X Dashboard</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: "Inter", sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(37, 99, 235, 0.25),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(124, 58, 237, 0.22),
+                    transparent 30%
+                ),
+                #070b16;
+
+            padding: 24px;
+
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 17px 22px;
+
+            border-radius: 20px;
+
+            background: rgba(15, 23, 42, 0.75);
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.25);
+
+        }
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+        }
+
+        .logo-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 12px;
+
+            display: grid;
+
+            place-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            box-shadow:
+                0 10px 30px rgba(37,99,235,0.3);
+
+        }
+
+        .logo-x {
+            color: #60a5fa;
+        }
+
+        .logout-btn {
+
+            border: none;
+
+            color: white;
+
+            background: rgba(239,68,68,0.14);
+
+            border: 1px solid rgba(239,68,68,0.25);
+
+            padding: 11px 17px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+
+        }
+
+        .logout-btn:hover {
+
+            background: #dc2626;
+
+            transform: translateY(-2px);
+
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin: 50px auto;
+
+        }
+
+        .welcome {
+
+            margin-bottom: 35px;
+
+        }
+
+        .welcome small {
+
+            color: #7dd3fc;
+
+            font-weight: 600;
+
+        }
+
+        .welcome h1 {
+
+            margin-top: 8px;
+
+            font-size: clamp(30px, 5vw, 48px);
+
+            line-height: 1.1;
+
+        }
+
+        .welcome p {
+
+            margin-top: 10px;
+
+            color: #94a3b8;
+
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 22px;
+
+        }
+
+        .card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.09),
+                    rgba(255,255,255,0.035)
+                );
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.25);
+
+            transition: 0.25s;
+
+        }
+
+        .card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            background: rgba(59,130,246,0.12);
+
+            filter: blur(40px);
+
+            top: -80px;
+
+            right: -70px;
+
+        }
+
+        .card:hover {
+
+            transform: translateY(-6px);
+
+            border-color:
+                rgba(96,165,250,0.25);
+
+        }
+
+        .icon-box {
+
+            width: 55px;
+
+            height: 55px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            font-size: 21px;
+
+            margin-bottom: 22px;
+
+        }
+
+        .join-card .icon-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0891b2,
+                    #2563eb
+                );
+
+        }
+
+        .card h2 {
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+
+        }
+
+        .card p {
+
+            color: #94a3b8;
+
+            line-height: 1.6;
+
+            margin-bottom: 24px;
+
+        }
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-wrapper {
+
+            position: relative;
+
+            margin-bottom: 13px;
+
+        }
+
+        .input-wrapper i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+
+        }
+
+        .join-input {
+
+            width: 100%;
+
+            padding: 15px 15px 15px 45px;
+
+            border-radius: 13px;
+
+            border: 1px solid #263247;
+
+            outline: none;
+
+            background: #080e1d;
+
+            color: white;
+
+            font-size: 15px;
+
+            letter-spacing: 1px;
+
+            transition: 0.2s;
+
+        }
+
+        .join-input:focus {
+
+            border-color: #3b82f6;
+
+            box-shadow:
+                0 0 0 4px rgba(59,130,246,0.1);
+
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .primary-btn {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 13px;
+
+            padding: 15px;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            transition: 0.2s;
+
+        }
+
+        .primary-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 35px rgba(37,99,235,0.25);
+
+        }
+
+        .primary-btn:disabled {
+
+            opacity: 0.6;
+
+            cursor: wait;
+
+            transform: none;
+
+        }
+
+        /* =========================
+           MEETING RESULT
+        ========================= */
+
+        #meetingResult {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(34,197,94,0.12),
+                    rgba(15,23,42,0.75)
+                );
+
+            border: 1px solid rgba(74,222,128,0.25);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.25);
+
+            animation: resultIn 0.35s ease;
+
+        }
+
+        @keyframes resultIn {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(15px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+        .success-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            display: grid;
+
+            place-items: center;
+
+            background: rgba(34,197,94,0.15);
+
+            color: #4ade80;
+
+            font-size: 25px;
+
+        }
+
+        .result-title {
+
+            font-size: 24px;
+
+            margin-bottom: 8px;
+
+        }
+
+        .result-text {
+
+            color: #94a3b8;
+
+        }
+
+        .meeting-id {
+
+            display: inline-block;
+
+            margin: 22px 0;
+
+            padding: 17px 25px;
+
+            border-radius: 15px;
+
+            background: #070b14;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            font-size: clamp(23px, 5vw, 34px);
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+            color: #f8fafc;
+
+            user-select: all;
+
+        }
+
+        .result-actions {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .result-btn {
+
+            border: none;
+
+            border-radius: 11px;
+
+            padding: 12px 18px;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+        }
+
+        .copy-btn {
+
+            background: #16a34a;
+
+        }
+
+        .open-btn {
+
+            background: #2563eb;
+
+        }
+
+        .status {
+
+            min-height: 24px;
+
+            margin-top: 17px;
+
+            color: #4ade80;
+
+            font-size: 14px;
+
+        }
+
+        /* =========================
+           INFO BAR
+        ========================= */
+
+        .info-bar {
+
+            margin-top: 25px;
+
+            padding: 18px 20px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.04);
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            color: #94a3b8;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+        .info-bar i {
+
+            color: #60a5fa;
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                margin-top: 35px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .navbar {
+                padding: 14px;
+            }
+
+            .logout-btn {
+                padding: 9px 12px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-video"></i>
+
+        </div>
+
+        <span>
+            PROJECT<span class="logo-x">X</span>
+        </span>
+
+    </div>
+
+
+    <button
+        class="logout-btn"
+        onclick="logout()"
+    >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Logout
+
+    </button>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container">
+
+
+    <section class="welcome">
+
+        <small>
+            YOUR MEETING SPACE
+        </small>
+
+        <h1 id="welcome">
+            Welcome 👋
+        </h1>
+
+        <p id="email">
+            Loading account...
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CARDS
+    ================================================== -->
+
+    <div class="cards">
+
+
+        <!-- CREATE -->
+
+        <div class="card">
+
+            <div class="icon-box">
+
+                <i class="fa-solid fa-video"></i>
+
+            </div>
+
+            <h2>
+                Create a Meeting
+            </h2>
+
+            <p>
+                Start a new meeting room and
+                share the generated meeting ID
+                with your participants.
+            </p>
+
+            <button
+                class="primary-btn"
+                id="createBtn"
+                onclick="createMeeting()"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                Create New Meeting
+
+            </button>
+
+        </div>
+
+
+
+        <!-- JOIN -->
+
+        <div class="card join-card">
+
+            <div class="icon-box">
+
+                <i class="fa-solid fa-link"></i>
+
+            </div>
+
+            <h2>
+                Join a Meeting
+            </h2>
+
+            <p>
+                Enter the meeting ID shared
+                by your host to join the room.
+            </p>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-key"></i>
+
+                <input
+                    type="text"
+                    id="joinMeetingInput"
+                    class="join-input"
+                    placeholder="123 456 789"
+                    maxlength="11"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                id="joinBtn"
+                onclick="joinMeeting()"
+            >
+
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+                Join Meeting
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MEETING RESULT
+    ================================================== -->
+
+    <section id="meetingResult">
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+        <h2 class="result-title">
+            Meeting Ready
+        </h2>
+
+        <p class="result-text">
+            Your meeting ID is:
+        </p>
+
+
+        <div
+            id="meetingId"
+            class="meeting-id"
+        >
+            ---
+        </div>
+
+
+        <div class="result-actions">
+
+            <button
+                class="result-btn copy-btn"
+                onclick="copyMeetingId()"
+            >
+
+                <i class="fa-solid fa-copy"></i>
+
+                Copy ID
+
+            </button>
+
+
+            <button
+                class="result-btn open-btn"
+                onclick="openMeeting()"
+            >
+
+                <i class="fa-solid fa-video"></i>
+
+                Open Meeting
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="status"
+            class="status"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         INFO
+    ================================================== -->
+
+    <div class="info-bar">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <span>
+            Your meeting connection is protected
+            by your PROJECT-X account.
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+// =====================================================
+// API
+// =====================================================
+
+const API_URL =
+    "http://127.0.0.1:8000";
+
+
+// =====================================================
+// TOKEN
+// =====================================================
+
+const token =
+    localStorage.getItem(
+        "access_token"
+    );
+
+
+if (!token) {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+// =====================================================
+// CURRENT MEETING
+// =====================================================
+
+let currentMeetingId =
+    localStorage.getItem(
+        "current_meeting_id"
+    );
+
+
+// =====================================================
+// SHOW SAVED MEETING
+// =====================================================
+
+function showMeetingResult(meetingId) {
+
+    if (!meetingId) {
+        return;
+    }
+
+    currentMeetingId =
+        meetingId;
+
+    document.getElementById(
+        "meetingId"
+    ).innerText =
+        meetingId;
+
+    document.getElementById(
+        "meetingResult"
+    ).style.display =
+        "block";
+
+}
+
+
+// =====================================================
+// LOAD USER
+// =====================================================
+
+async function loadUser() {
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/me",
+                {
+
+                    method: "GET",
+
+                    headers: {
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    }
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            localStorage.removeItem(
+                "access_token"
+            );
+
+            localStorage.removeItem(
+                "current_meeting_id"
+            );
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "welcome"
+        ).innerText =
+            "Welcome " +
+            data.user.name +
+            " 👋";
+
+
+        document.getElementById(
+            "email"
+        ).innerText =
+            data.user.email;
+
+
+        // IMPORTANT:
+        // Restore meeting ID after page reload
+
+        if (currentMeetingId) {
+
+            showMeetingResult(
+                currentMeetingId
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "email"
+        ).innerText =
+            "Cannot connect to backend.";
+
+    }
+
+}
+
+
+// =====================================================
+// CREATE MEETING
+// =====================================================
+
+async function createMeeting() {
+
+    const button =
+        document.getElementById(
+            "createBtn"
+        );
+
+
+    button.disabled = true;
+
+    button.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Creating...';
+
+
+    document.getElementById(
+        "status"
+    ).innerText =
+        "";
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/meetings",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    }
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "CREATE MEETING RESPONSE:",
+            data
+        );
+
+
+        if (!response.ok) {
+
+            alert(
+                data.detail ||
+                "Failed to create meeting."
+            );
+
+            return;
+
+        }
+
+
+        // =================================================
+        // IMPORTANT
+        // GET THE REAL ID FROM BACKEND
+        // =================================================
+
+        const newMeetingId =
+            data?.meeting?.meeting_id;
+
+
+        if (!newMeetingId) {
+
+            console.error(
+                "Backend did not return meeting_id:",
+                data
+            );
+
+            alert(
+                "Meeting was created but Meeting ID was not returned."
+            );
+
+            return;
+
+        }
+
+
+        // =================================================
+        // SAVE ID
+        // =================================================
+
+        currentMeetingId =
+            newMeetingId;
+
+
+        localStorage.setItem(
+            "current_meeting_id",
+            newMeetingId
+        );
+
+
+        // =================================================
+        // SHOW ID
+        // =================================================
+
+        showMeetingResult(
+            newMeetingId
+        );
+
+
+        document.getElementById(
+            "status"
+        ).innerText =
+            "Meeting created successfully. Your ID is ready. ✅";
+
+
+        // Scroll to ID
+
+        document.getElementById(
+            "meetingResult"
+        ).scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "CREATE MEETING ERROR:",
+            error
+        );
+
+        alert(
+            "Cannot connect to FastAPI."
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.innerHTML =
+            '<i class="fa-solid fa-plus"></i> Create New Meeting';
+
+    }
+
+}
+
+
+// =====================================================
+// COPY MEETING ID
+// =====================================================
+
+async function copyMeetingId() {
+
+    if (!currentMeetingId) {
+
+        alert(
+            "No meeting ID available."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            currentMeetingId
+        );
+
+
+        document.getElementById(
+            "status"
+        ).innerText =
+            "Meeting ID copied successfully! ✅";
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Copy failed. Your Meeting ID is:\n\n" +
+            currentMeetingId
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// OPEN MEETING
+// =====================================================
+
+function openMeeting() {
+
+    if (!currentMeetingId) {
+
+        alert(
+            "Please create a meeting first."
+        );
+
+        return;
+
+    }
+
+
+    const url =
+        "meeting.html?meeting_id=" +
+        encodeURIComponent(
+            currentMeetingId
+        );
+
+
+    window.location.href =
+        url;
+
+}
+
+
+// =====================================================
+// JOIN MEETING
+// =====================================================
+
+async function joinMeeting() {
+
+    const input =
+        document.getElementById(
+            "joinMeetingInput"
+        );
+
+
+    const button =
+        document.getElementById(
+            "joinBtn"
+        );
+
+
+    const meetingId =
+        input.value.trim();
+
+
+    if (!meetingId) {
+
+        alert(
+            "Please enter a Meeting ID."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    button.disabled = true;
+
+    button.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Checking...';
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/meetings/join",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            meeting_id:
+                                meetingId
+
+                        })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            alert(
+                data.detail ||
+                "Meeting not found."
+            );
+
+            return;
+
+        }
+
+
+        const confirmedMeetingId =
+            data?.meeting?.meeting_id ||
+            meetingId;
+
+
+        localStorage.setItem(
+            "current_meeting_id",
+            confirmedMeetingId
+        );
+
+
+        currentMeetingId =
+            confirmedMeetingId;
+
+
+        // Open meeting
+
+        window.location.href =
+            "meeting.html?meeting_id=" +
+            encodeURIComponent(
+                confirmedMeetingId
+            );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Cannot connect to FastAPI."
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.innerHTML =
+            '<i class="fa-solid fa-arrow-right-to-bracket"></i> Join Meeting';
+
+    }
+
+}
+
+
+// =====================================================
+// FORMAT MEETING ID INPUT
+// =====================================================
+
+document
+    .getElementById("joinMeetingInput")
+    .addEventListener(
+        "input",
+        function() {
+
+            let value =
+                this.value.replace(
+                    /\D/g,
+                    ""
+                );
+
+            value =
+                value.substring(
+                    0,
+                    9
+                );
+
+
+            let formatted = "";
+
+            for (
+                let i = 0;
+                i < value.length;
+                i++
+            ) {
+
+                if (
+                    i > 0 &&
+                    i % 3 === 0
+                ) {
+
+                    formatted += " ";
+
+                }
+
+                formatted +=
+                    value[i];
+
+            }
+
+            this.value =
+                formatted;
+
+        }
+    );
+
+
+// =====================================================
+// ENTER KEY TO JOIN
+// =====================================================
+
+document
+    .getElementById("joinMeetingInput")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                joinMeeting();
+
+            }
+
+        }
+    );
+
+
+// =====================================================
+// LOGOUT
+// =====================================================
+
+function logout() {
+
+    localStorage.removeItem(
+        "access_token"
+    );
+
+    localStorage.removeItem(
+        "user"
+    );
+
+    localStorage.removeItem(
+        "current_meeting_id"
+    );
+
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+// =====================================================
+// START
+// =====================================================
+
+loadUser();
+
+</script>
+
+
+</body>
+
+</html>

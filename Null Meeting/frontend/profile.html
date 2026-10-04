@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PROJECT-X Profile</title>
+</head>
+
+<body>
+
+    <h1>My Profile</h1>
+
+    <div id="profile">
+        Loading...
+    </div>
+
+    <button id="logoutBtn">
+        Logout
+    </button>
+
+
+    <script>
+
+        // Get JWT token from browser
+
+        const token =
+            localStorage.getItem("access_token");
+
+
+        // If token doesn't exist
+
+        if (!token) {
+
+            document.getElementById("profile").innerHTML =
+                "<p>Please login first.</p>";
+
+        } else {
+
+            // Call protected FastAPI endpoint
+
+            fetch(
+                "http://127.0.0.1:8000/profile",
+                {
+                    method: "GET",
+
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                }
+            )
+
+            .then(response => {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Authentication failed"
+                    );
+
+                }
+
+                return response.json();
+
+            })
+
+            .then(data => {
+
+                console.log(data);
+
+
+                // Display user information
+
+                document.getElementById("profile").innerHTML = `
+
+                    <h2>Welcome!</h2>
+
+                    <p>
+                        User ID:
+                        ${data.user.user_id}
+                    </p>
+
+                    <p>
+                        Email:
+                        ${data.user.email}
+                    </p>
+
+                    <p>
+                        ${data.message}
+                    </p>
+
+                `;
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                document.getElementById("profile").innerHTML =
+                    "<p>Login expired or invalid.</p>";
+
+            });
+
+        }
+
+
+        // Logout
+
+        document.getElementById("logoutBtn")
+            .addEventListener("click", function() {
+
+                localStorage.removeItem(
+                    "access_token"
+                );
+
+                window.location.href =
+                    "login.html";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

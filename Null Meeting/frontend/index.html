@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PROJECT-X | Connect. Collaborate. Create.</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-video"></i>
+            </div>
+
+            <span>PROJECT<span class="logo-x">X</span></span>
+        </div>
+
+
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#features">Features</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#about">About</a>
+        </nav>
+
+
+        <div class="nav-buttons">
+            <button class="login-btn" onclick="openLogin()">
+                Login
+            </button>
+
+            <button class="primary-btn" onclick="openRegister()">
+                Get Started
+            </button>
+        </div>
+
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- ================= MOBILE MENU ================= -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#about">About</a>
+
+        <button onclick="openLogin()">Login</button>
+        <button onclick="openRegister()">Get Started</button>
+
+    </div>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    <span class="live-dot"></span>
+                    The future of online meetings
+                </div>
+
+
+                <h1>
+                    Connect.
+                    <span>Collaborate.</span>
+                    Create.
+                </h1>
+
+
+                <p>
+                    Simple, secure and powerful video meetings
+                    for teams, friends and communities.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn big-btn"
+                            onclick="openCreateMeeting()">
+
+                        <i class="fa-solid fa-video"></i>
+                        Start a Meeting
+
+                    </button>
+
+
+                    <button class="secondary-btn big-btn"
+                            onclick="openJoinMeeting()">
+
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Join a Meeting
+
+                    </button>
+
+                </div>
+
+
+                <div class="hero-note">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Secure connection • No complicated setup
+
+                </div>
+
+            </div>
+
+
+            <!-- MEETING PREVIEW -->
+
+            <div class="meeting-preview">
+
+                <div class="preview-glow"></div>
+
+
+                <div class="meeting-window">
+
+                    <div class="meeting-topbar">
+
+                        <div class="meeting-title">
+                            <span class="status"></span>
+                            Team Meeting
+                        </div>
+
+                        <div class="meeting-actions">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="video-grid">
+
+                        <div class="video-card video-one">
+
+                            <div class="person-avatar">
+                                Z
+                            </div>
+
+                            <span class="person-name">
+                                Zoro
+                            </span>
+
+                            <span class="mic-status">
+                                <i class="fa-solid fa-microphone"></i>
+                            </span>
+
+                        </div>
+
+
+                        <div class="video-card video-two">
+
+                            <div class="person-avatar avatar-two">
+                                A
+                            </div>
+
+                            <span class="person-name">
+                                Arun
+                            </span>
+
+                            <span class="mic-status">
+                                <i class="fa-solid fa-microphone"></i>
+                            </span>
+
+                        </div>
+
+
+                        <div class="video-card video-three">
+
+                            <div class="person-avatar avatar-three">
+                                S
+                            </div>
+
+                            <span class="person-name">
+                                Sam
+                            </span>
+
+                            <span class="mic-status muted">
+                                <i class="fa-solid fa-microphone-slash"></i>
+                            </span>
+
+                        </div>
+
+
+                        <div class="video-card video-four">
+
+                            <div class="person-avatar avatar-four">
+                                K
+                            </div>
+
+                            <span class="person-name">
+                                Kumar
+                            </span>
+
+                            <span class="mic-status">
+                                <i class="fa-solid fa-microphone"></i>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="meeting-controls">
+
+                        <button>
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+
+                        <button>
+                            <i class="fa-solid fa-video"></i>
+                        </button>
+
+                        <button>
+                            <i class="fa-solid fa-desktop"></i>
+                        </button>
+
+                        <button>
+                            <i class="fa-solid fa-comment"></i>
+                        </button>
+
+                        <button class="leave-btn">
+                            <i class="fa-solid fa-phone"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="features" id="features">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    POWERFUL FEATURES
+                </span>
+
+                <h2>
+                    Everything you need
+                    <br>
+                    <span>to meet online.</span>
+                </h2>
+
+                <p>
+                    Built for conversations that matter.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+
+                    <h3>HD Video</h3>
+
+                    <p>
+                        Crystal-clear video meetings
+                        with smooth communication.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+
+                    <h3>Clear Audio</h3>
+
+                    <p>
+                        High-quality audio designed
+                        for natural conversations.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+
+                    <h3>Screen Sharing</h3>
+
+                    <p>
+                        Share your screen, window or
+                        presentation instantly.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+
+                    <h3>Live Chat</h3>
+
+                    <p>
+                        Send messages while you're
+                        inside the meeting.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <h3>Team Meetings</h3>
+
+                    <p>
+                        Bring your entire team into
+                        one virtual room.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <h3>Secure</h3>
+
+                    <p>
+                        Designed with privacy and
+                        secure communication in mind.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta" id="solutions">
+
+            <div class="cta-content">
+
+                <span class="section-label">
+                    READY WHEN YOU ARE
+                </span>
+
+                <h2>
+                    Your next conversation
+                    <span>starts here.</span>
+                </h2>
+
+                <p>
+                    Create a meeting and bring everyone
+                    together in seconds.
+                </p>
+
+                <button class="primary-btn big-btn"
+                        onclick="openCreateMeeting()">
+
+                    <i class="fa-solid fa-video"></i>
+                    Start a Free Meeting
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer id="about">
+
+            <div class="footer-logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+
+                <span>
+                    PROJECT<span class="logo-x">X</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Connect. Collaborate. Create.
+            </p>
+
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 PROJECT-X. All rights reserved.
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal-overlay" id="modalOverlay">
+
+        <div class="modal">
+
+            <button class="close-modal" onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
