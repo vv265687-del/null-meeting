@@ -5,103 +5,51 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Null Meeting | Meeting</title>
-
-
-    <!-- =====================================================
-         FONT AWESOME
-    ====================================================== -->
+    <title>NULL MEETING | Meeting</title>
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-
-    <!-- =====================================================
-         GOOGLE FONT
-    ====================================================== -->
-
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-
     <style>
 
-        /* =====================================================
-           RESET
-        ===================================================== */
-
         * {
-
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
         }
 
-
-        /* =====================================================
-           BODY
-        ===================================================== */
-
         body {
-
             background:
-
-                radial-gradient(
-                    circle at top left,
-                    #18264d,
-                    transparent 35%
-                ),
-
-                radial-gradient(
-                    circle at bottom right,
-                    #291449,
-                    transparent 35%
-                ),
-
+                radial-gradient(circle at top left, #18264d, transparent 35%),
+                radial-gradient(circle at bottom right, #291449, transparent 35%),
                 #080b14;
 
             color: white;
-
             font-family: "Inter", Arial, sans-serif;
-
             height: 100vh;
-
             overflow: hidden;
-
         }
 
-
-        /* =====================================================
+        /* =========================
            TOP BAR
-        ===================================================== */
+        ========================= */
 
         .top-bar {
-
             height: 68px;
-
-            background:
-                rgba(15, 18, 30, 0.92);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.08);
+            background: rgba(15, 18, 30, 0.94);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             padding: 0 24px;
@@ -109,96 +57,57 @@
             backdrop-filter: blur(18px);
 
             position: relative;
-
             z-index: 20;
-
         }
-
 
         .logo {
-
             font-size: 21px;
-
             font-weight: 800;
-
             color: #60a5fa;
-
             white-space: nowrap;
-
         }
 
-
         .meeting-info {
-
             display: flex;
-
             align-items: center;
-
             gap: 8px;
 
             color: #9ca3af;
-
             font-size: 13px;
-
         }
-
 
         #meetingId {
-
             color: white;
-
             font-weight: 700;
-
             letter-spacing: 1px;
-
         }
 
-
         .participant-count {
-
-            background:
-                rgba(96,165,250,0.12);
-
-            border:
-                1px solid
-                rgba(96,165,250,0.2);
+            background: rgba(96,165,250,0.12);
+            border: 1px solid rgba(96,165,250,0.2);
 
             color: #93c5fd;
 
-            padding:
-                7px 12px;
-
+            padding: 7px 12px;
             border-radius: 20px;
 
             font-size: 12px;
-
             white-space: nowrap;
-
         }
 
-
-        /* =====================================================
+        /* =========================
            VIDEO AREA
-        ===================================================== */
+        ========================= */
 
         .video-area {
-
-            height:
-                calc(100vh - 148px);
-
+            height: calc(100vh - 148px);
             padding: 18px;
-
             overflow: auto;
-
         }
 
-
         .video-grid {
-
             width: 100%;
-
             max-width: 1500px;
-
             min-height: 100%;
 
             margin: auto;
@@ -206,25 +115,16 @@
             display: grid;
 
             grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(
-                        300px,
-                        1fr
-                    )
-                );
+                repeat(auto-fit, minmax(300px, 1fr));
 
             gap: 16px;
-
         }
 
-
-        /* =====================================================
+        /* =========================
            VIDEO CARD
-        ===================================================== */
+        ========================= */
 
         .video-card {
-
             position: relative;
 
             background:
@@ -234,10 +134,7 @@
                     #0d111c
                 );
 
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 20px;
 
             overflow: hidden;
@@ -245,63 +142,39 @@
             min-height: 250px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             box-shadow:
-                0 15px 40px
-                rgba(0,0,0,0.25);
-
+                0 15px 40px rgba(0,0,0,0.25);
         }
 
-
         .video-card video {
-
             width: 100%;
-
             height: 100%;
 
             object-fit: cover;
 
             display: none;
-
         }
-
 
         .local-video {
-
             transform: scaleX(-1);
-
         }
-
-
-        /* =====================================================
-           CAMERA OFF
-        ====================================================== */
 
         .camera-off {
-
             text-align: center;
-
             color: #9ca3af;
-
         }
 
-
         .avatar {
-
             width: 82px;
-
             height: 82px;
 
             border-radius: 50%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             margin: 0 auto 14px;
@@ -314,53 +187,33 @@
                 );
 
             font-size: 30px;
-
             font-weight: 800;
-
             color: white;
-
         }
 
-
         .user-name {
-
             font-size: 17px;
-
             font-weight: 700;
 
             color: white;
 
             margin-bottom: 5px;
-
         }
-
 
         .camera-text {
-
             font-size: 13px;
-
             color: #8b93a5;
-
         }
 
-
-        /* =====================================================
-           VIDEO LABEL
-        ====================================================== */
-
         .video-label {
-
             position: absolute;
 
             left: 14px;
-
             bottom: 14px;
 
-            background:
-                rgba(0,0,0,0.65);
+            background: rgba(0,0,0,0.65);
 
-            padding:
-                7px 11px;
+            padding: 7px 11px;
 
             border-radius: 8px;
 
@@ -369,27 +222,17 @@
             backdrop-filter: blur(8px);
 
             z-index: 5;
-
         }
 
-
-        /* =====================================================
-           CONNECTION STATUS
-        ====================================================== */
-
         .connection-status {
-
             position: absolute;
 
             top: 14px;
-
             right: 14px;
 
-            background:
-                rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.6);
 
-            padding:
-                7px 10px;
+            padding: 7px 10px;
 
             border-radius: 8px;
 
@@ -398,36 +241,27 @@
             color: #fbbf24;
 
             z-index: 5;
-
         }
-
 
         .connection-status.connected {
-
             color: #4ade80;
-
         }
 
-
-        /* =====================================================
+        /* =========================
            CONTROLS
-        ====================================================== */
+        ========================= */
 
         .controls {
-
             height: 80px;
 
-            background:
-                rgba(12,15,24,0.94);
+            background: rgba(12,15,24,0.96);
 
             border-top:
-                1px solid
-                rgba(255,255,255,0.08);
+                1px solid rgba(255,255,255,0.08);
 
             display: flex;
 
             justify-content: center;
-
             align-items: center;
 
             gap: 14px;
@@ -435,24 +269,18 @@
             backdrop-filter: blur(18px);
 
             position: relative;
-
             z-index: 30;
-
         }
 
-
         .control-btn {
-
             width: 52px;
-
             height: 52px;
 
             border-radius: 50%;
 
             border: none;
 
-            background:
-                #242a38;
+            background: #242a38;
 
             color: white;
 
@@ -463,61 +291,37 @@
             transition: 0.2s ease;
 
             position: relative;
-
         }
-
 
         .control-btn:hover {
-
-            transform:
-                translateY(-2px);
-
-            background:
-                #343b4c;
-
+            transform: translateY(-2px);
+            background: #343b4c;
         }
-
 
         .control-btn.active {
-
-            background:
-                #2563eb;
-
+            background: #2563eb;
         }
-
 
         .leave-btn {
-
-            background:
-                #dc2626;
-
+            background: #dc2626;
             margin-left: 12px;
-
         }
-
 
         .leave-btn:hover {
-
-            background:
-                #ef4444;
-
+            background: #ef4444;
         }
 
-
-        /* =====================================================
-           CHAT BUTTON BADGE
-        ====================================================== */
+        /* =========================
+           CHAT
+        ========================= */
 
         .chat-badge {
-
             position: absolute;
 
             top: -3px;
-
             right: -3px;
 
             width: 18px;
-
             height: 18px;
 
             border-radius: 50%;
@@ -531,52 +335,34 @@
             display: none;
 
             align-items: center;
-
             justify-content: center;
 
             font-weight: 700;
-
         }
-
 
         .chat-badge.show {
-
             display: flex;
-
         }
 
-
-        /* =====================================================
-           CHAT PANEL
-        ====================================================== */
-
         .chat-panel {
-
             position: fixed;
 
             top: 78px;
-
             right: 18px;
 
             width: 350px;
-
-            height:
-                calc(100vh - 178px);
+            height: calc(100vh - 178px);
 
             max-height: 650px;
 
-            background:
-                rgba(14,18,30,0.97);
+            background: rgba(14,18,30,0.97);
 
-            border:
-                1px solid
-                rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
 
             border-radius: 18px;
 
             box-shadow:
-                0 25px 70px
-                rgba(0,0,0,0.5);
+                0 25px 70px rgba(0,0,0,0.5);
 
             backdrop-filter: blur(20px);
 
@@ -587,23 +373,13 @@
             flex-direction: column;
 
             overflow: hidden;
-
         }
-
 
         .chat-panel.open {
-
             display: flex;
-
         }
 
-
-        /* =====================================================
-           CHAT HEADER
-        ====================================================== */
-
         .chat-header {
-
             height: 60px;
 
             display: flex;
@@ -615,14 +391,10 @@
             padding: 0 18px;
 
             border-bottom:
-                1px solid
-                rgba(255,255,255,0.08);
-
+                1px solid rgba(255,255,255,0.08);
         }
 
-
         .chat-title {
-
             display: flex;
 
             align-items: center;
@@ -632,21 +404,14 @@
             font-size: 16px;
 
             font-weight: 700;
-
         }
-
 
         .chat-title i {
-
             color: #60a5fa;
-
         }
 
-
         .close-chat {
-
             border: none;
-
             background: transparent;
 
             color: #9ca3af;
@@ -656,47 +421,30 @@
             cursor: pointer;
 
             width: 34px;
-
             height: 34px;
 
             border-radius: 8px;
-
         }
-
 
         .close-chat:hover {
-
-            background:
-                rgba(255,255,255,0.08);
-
+            background: rgba(255,255,255,0.08);
             color: white;
-
         }
 
-
-        /* =====================================================
-           CHAT MESSAGES
-        ====================================================== */
-
         .chat-messages {
-
             flex: 1;
 
             overflow-y: auto;
 
             padding: 16px;
-
         }
 
-
         .empty-chat {
-
             height: 100%;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             flex-direction: column;
@@ -708,21 +456,14 @@
             text-align: center;
 
             font-size: 13px;
-
         }
-
 
         .empty-chat i {
-
             font-size: 35px;
-
             color: #39445c;
-
         }
 
-
         .message {
-
             display: flex;
 
             flex-direction: column;
@@ -730,43 +471,26 @@
             margin-bottom: 14px;
 
             max-width: 85%;
-
         }
-
 
         .message.mine {
-
             margin-left: auto;
-
             align-items: flex-end;
-
         }
-
 
         .message.other {
-
             margin-right: auto;
-
             align-items: flex-start;
-
         }
-
 
         .message-sender {
-
             font-size: 11px;
-
             color: #8e98ac;
-
             margin-bottom: 4px;
-
         }
 
-
         .message-bubble {
-
-            padding:
-                9px 12px;
+            padding: 9px 12px;
 
             border-radius: 13px;
 
@@ -775,136 +499,334 @@
             line-height: 1.45;
 
             word-break: break-word;
-
         }
 
-
         .message.mine .message-bubble {
-
-            background:
-                #2563eb;
-
+            background: #2563eb;
             color: white;
 
             border-bottom-right-radius: 4px;
-
         }
 
-
         .message.other .message-bubble {
-
-            background:
-                #242a38;
-
+            background: #242a38;
             color: #e5e7eb;
 
             border-bottom-left-radius: 4px;
-
         }
-
 
         .message-time {
-
             font-size: 9px;
-
             color: #626b7d;
-
             margin-top: 4px;
-
         }
 
-
-        /* =====================================================
-           CHAT INPUT
-        ====================================================== */
-
         .chat-input-area {
-
             padding: 12px;
 
             border-top:
-                1px solid
-                rgba(255,255,255,0.08);
+                1px solid rgba(255,255,255,0.08);
 
             display: flex;
 
             gap: 8px;
-
         }
 
-
         #chatInput {
-
             flex: 1;
 
             height: 42px;
 
             border: none;
-
             outline: none;
 
             border-radius: 10px;
 
-            background:
-                #202634;
+            background: #202634;
 
             color: white;
 
-            padding:
-                0 12px;
+            padding: 0 12px;
 
             font-size: 13px;
-
         }
-
 
         #chatInput::placeholder {
-
             color: #687184;
-
         }
 
-
         #sendChatBtn {
-
             width: 42px;
-
             height: 42px;
 
             border: none;
 
             border-radius: 10px;
 
-            background:
-                #2563eb;
+            background: #2563eb;
 
             color: white;
 
             cursor: pointer;
 
             font-size: 15px;
-
         }
 
+        /* =========================
+           ADMIN BUTTON
+        ========================= */
 
-        #sendChatBtn:hover {
+        #adminBtn {
+            display: none;
+        }
+
+        /* =========================
+           ADMIN PANEL
+        ========================= */
+
+        .admin-panel {
+            position: fixed;
+
+            top: 78px;
+            left: 18px;
+
+            width: 330px;
+
+            max-height: calc(100vh - 110px);
+
+            background: rgba(14,18,30,0.98);
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.5);
+
+            z-index: 60;
+
+            display: none;
+
+            overflow-y: auto;
+        }
+
+        .admin-panel.open {
+            display: block;
+        }
+
+        .admin-header {
+            padding: 18px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .admin-header h3 {
+            font-size: 16px;
+        }
+
+        .admin-section {
+            padding: 15px 18px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.06);
+        }
+
+        .admin-section-title {
+            font-size: 12px;
+
+            color: #8e98ac;
+
+            margin-bottom: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+        .admin-action {
+            width: 100%;
+
+            padding: 10px 12px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #242a38;
+
+            color: white;
+
+            cursor: pointer;
+
+            margin-bottom: 8px;
+
+            text-align: left;
+        }
+
+        .admin-action:hover {
+            background: #343b4c;
+        }
+
+        .waiting-user {
+            background: #202634;
+
+            border-radius: 10px;
+
+            padding: 11px;
+
+            margin-bottom: 8px;
+        }
+
+        .waiting-user-name {
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+        .waiting-actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .waiting-actions button {
+            flex: 1;
+
+            border: none;
+
+            padding: 7px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-size: 11px;
+        }
+
+        .admit-btn {
+            background: #16a34a;
+        }
+
+        .reject-btn {
+            background: #dc2626;
+        }
+
+        /* =========================
+           WAITING SCREEN
+        ========================= */
+
+        .waiting-screen {
+            position: fixed;
+
+            inset: 0;
 
             background:
-                #3b82f6;
+                radial-gradient(
+                    circle at top,
+                    #18264d,
+                    #080b14 65%
+                );
 
+            z-index: 200;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 25px;
         }
 
+        .waiting-screen.show {
+            display: flex;
+        }
 
-        /* =====================================================
+        .waiting-box {
+            width: min(430px, 100%);
+
+            background: rgba(18,23,38,0.95);
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            border-radius: 24px;
+
+            padding: 35px 25px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.45);
+        }
+
+        .waiting-icon {
+            width: 75px;
+            height: 75px;
+
+            border-radius: 50%;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            font-size: 28px;
+        }
+
+        .waiting-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .waiting-box p {
+            color: #9ca3af;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .cancel-waiting {
+            margin-top: 22px;
+
+            padding: 11px 18px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #242a38;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        /* =========================
            TOAST
-        ====================================================== */
+        ========================= */
 
         #toast {
-
             position: fixed;
 
             left: 50%;
-
             bottom: 100px;
 
             transform:
@@ -915,11 +837,9 @@
                 rgba(20,25,38,0.96);
 
             border:
-                1px solid
-                rgba(255,255,255,0.1);
+                1px solid rgba(255,255,255,0.1);
 
-            padding:
-                12px 18px;
+            padding: 12px 18px;
 
             border-radius: 12px;
 
@@ -929,126 +849,87 @@
 
             transition: 0.25s ease;
 
-            z-index: 100;
+            z-index: 300;
 
             color: #e5e7eb;
 
             font-size: 13px;
-
         }
 
-
         #toast.show {
-
             opacity: 1;
 
             transform:
                 translateX(-50%)
                 translateY(0);
-
         }
 
-
-        /* =====================================================
+        /* =========================
            MOBILE
-        ====================================================== */
+        ========================= */
 
         @media (max-width: 700px) {
 
             .top-bar {
-
                 padding: 0 12px;
-
             }
-
 
             .logo {
-
-                font-size: 17px;
-
+                font-size: 16px;
             }
-
 
             .meeting-info {
-
                 font-size: 10px;
-
             }
-
 
             #meetingId {
-
-                font-size: 10px;
-
+                font-size: 9px;
             }
-
 
             .participant-count {
-
                 display: none;
-
             }
-
 
             .video-area {
-
                 padding: 10px;
-
             }
-
 
             .video-grid {
-
                 grid-template-columns: 1fr;
-
             }
-
 
             .video-card {
-
                 min-height: 230px;
-
             }
-
 
             .controls {
-
-                gap: 7px;
-
+                gap: 6px;
             }
-
 
             .control-btn {
-
-                width: 46px;
-
-                height: 46px;
-
-                font-size: 16px;
-
+                width: 44px;
+                height: 44px;
+                font-size: 15px;
             }
-
 
             .leave-btn {
-
-                margin-left: 5px;
-
+                margin-left: 4px;
             }
 
-
             .chat-panel {
-
                 top: 74px;
-
                 left: 10px;
-
                 right: 10px;
 
                 width: auto;
 
-                height:
-                    calc(100vh - 160px);
+                height: calc(100vh - 160px);
+            }
 
+            .admin-panel {
+                left: 10px;
+                right: 10px;
+                width: auto;
             }
 
         }
@@ -1057,13 +938,11 @@
 
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
+<!-- =========================================================
      TOP BAR
-====================================================== -->
+========================================================= -->
 
 <header class="top-bar">
 
@@ -1075,58 +954,45 @@
 
     </div>
 
-
     <div class="meeting-info">
 
         <span>Meeting ID:</span>
 
         <span id="meetingId">
-
             Loading...
-
         </span>
 
     </div>
-
 
     <div
         class="participant-count"
         id="participantCount"
     >
-
         👥 1 participant
-
     </div>
 
 </header>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      VIDEO AREA
-====================================================== -->
+========================================================= -->
 
 <main class="video-area">
 
     <div
         class="video-grid"
         id="videoGrid"
-    >
-
-    </div>
+    ></div>
 
 </main>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      CONTROLS
-====================================================== -->
+========================================================= -->
 
 <div class="controls">
-
-
-    <!-- CAMERA -->
 
     <button
         class="control-btn"
@@ -1134,13 +1000,9 @@
         onclick="toggleCamera()"
         title="Camera"
     >
-
         <i class="fa-solid fa-video"></i>
-
     </button>
 
-
-    <!-- MICROPHONE -->
 
     <button
         class="control-btn"
@@ -1148,13 +1010,9 @@
         onclick="toggleMicrophone()"
         title="Microphone"
     >
-
         <i class="fa-solid fa-microphone"></i>
-
     </button>
 
-
-    <!-- SCREEN SHARE -->
 
     <button
         class="control-btn"
@@ -1162,13 +1020,9 @@
         onclick="shareScreen()"
         title="Share screen"
     >
-
         <i class="fa-solid fa-display"></i>
-
     </button>
 
-
-    <!-- CHAT -->
 
     <button
         class="control-btn"
@@ -1176,7 +1030,6 @@
         onclick="toggleChat()"
         title="Chat"
     >
-
         <i class="fa-solid fa-comment"></i>
 
         <span
@@ -1189,31 +1042,37 @@
     </button>
 
 
-    <!-- LEAVE -->
+    <!-- HOST BUTTON -->
+
+    <button
+        class="control-btn"
+        id="adminBtn"
+        onclick="toggleAdminPanel()"
+        title="Host controls"
+    >
+        <i class="fa-solid fa-crown"></i>
+    </button>
+
 
     <button
         class="control-btn leave-btn"
         onclick="leaveMeeting()"
         title="Leave meeting"
     >
-
         <i class="fa-solid fa-phone"></i>
-
     </button>
 
 </div>
 
 
-
-<!-- =====================================================
-     CHAT PANEL
-====================================================== -->
+<!-- =========================================================
+     CHAT
+========================================================= -->
 
 <aside
     class="chat-panel"
     id="chatPanel"
 >
-
 
     <div class="chat-header">
 
@@ -1225,14 +1084,11 @@
 
         </div>
 
-
         <button
             class="close-chat"
             onclick="toggleChat()"
         >
-
             <i class="fa-solid fa-xmark"></i>
-
         </button>
 
     </div>
@@ -1273,14 +1129,11 @@
             autocomplete="off"
         >
 
-
         <button
             id="sendChatBtn"
             onclick="sendChatMessage()"
         >
-
             <i class="fa-solid fa-paper-plane"></i>
-
         </button>
 
     </div>
@@ -1288,13 +1141,153 @@
 </aside>
 
 
+<!-- =========================================================
+     ADMIN PANEL
+========================================================= -->
 
-<!-- =====================================================
+<aside
+    class="admin-panel"
+    id="adminPanel"
+>
+
+    <div class="admin-header">
+
+        <h3>
+            <i class="fa-solid fa-crown"></i>
+            Host Controls
+        </h3>
+
+        <button
+            class="close-chat"
+            onclick="toggleAdminPanel()"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+
+    <!-- WAITING USERS -->
+
+    <div class="admin-section">
+
+        <div class="admin-section-title">
+            Waiting Room
+        </div>
+
+        <div id="waitingList">
+
+            <div
+                style="
+                    color:#71798b;
+                    font-size:12px;
+                "
+            >
+                No one is waiting.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MEETING SETTINGS -->
+
+    <div class="admin-section">
+
+        <div class="admin-section-title">
+            Meeting Settings
+        </div>
+
+        <button
+            class="admin-action"
+            onclick="toggleWaitingRoom()"
+        >
+            <i class="fa-solid fa-door-open"></i>
+            Toggle Waiting Room
+        </button>
+
+
+        <button
+            class="admin-action"
+            onclick="toggleLockMeeting()"
+        >
+            <i class="fa-solid fa-lock"></i>
+            Lock / Unlock Meeting
+        </button>
+
+
+        <button
+            class="admin-action"
+            onclick="endMeeting()"
+            style="color:#f87171;"
+        >
+            <i class="fa-solid fa-circle-xmark"></i>
+            End Meeting For Everyone
+        </button>
+
+    </div>
+
+
+    <div class="admin-section">
+
+        <div class="admin-section-title">
+            Participants
+        </div>
+
+        <div id="participantAdminList">
+            Loading...
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     WAITING SCREEN
+========================================================= -->
+
+<div
+    class="waiting-screen"
+    id="waitingScreen"
+>
+
+    <div class="waiting-box">
+
+        <div class="waiting-icon">
+
+            <i class="fa-solid fa-hourglass-half"></i>
+
+        </div>
+
+        <h2>
+            Please wait...
+        </h2>
+
+        <p id="waitingMessage">
+
+            The host will let you into the meeting.
+
+        </p>
+
+        <button
+            class="cancel-waiting"
+            onclick="leaveWaitingRoom()"
+        >
+            Leave Meeting
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      TOAST
-====================================================== -->
+========================================================= -->
 
 <div id="toast"></div>
-
 
 
 <script>
@@ -1316,16 +1309,13 @@ const urlParams =
         window.location.search
     );
 
-
 const meetingId =
     urlParams.get("meeting_id");
 
 
 if (!meetingId) {
 
-    alert(
-        "Meeting ID not found."
-    );
+    alert("Meeting ID not found.");
 
     window.location.href =
         "dashboard.html";
@@ -1334,7 +1324,7 @@ if (!meetingId) {
 
 
 /* =========================================================
-   SHOW MEETING ID
+   DISPLAY MEETING ID
 ========================================================= */
 
 document.getElementById(
@@ -1344,17 +1334,35 @@ document.getElementById(
 
 
 /* =========================================================
-   GET CURRENT USER
+   GET TOKEN
+========================================================= */
+
+const token =
+    localStorage.getItem(
+        "access_token"
+    );
+
+
+if (!token) {
+
+    alert("Please login first.");
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =========================================================
+   CURRENT USER
 ========================================================= */
 
 let currentUser = null;
-
 
 try {
 
     const savedUser =
         localStorage.getItem("user");
-
 
     if (savedUser) {
 
@@ -1380,28 +1388,6 @@ const localUserName =
 
 
 /* =========================================================
-   TOKEN
-========================================================= */
-
-const token =
-    localStorage.getItem(
-        "access_token"
-    );
-
-
-if (!token) {
-
-    alert(
-        "Please login first."
-    );
-
-    window.location.href =
-        "index.html";
-
-}
-
-
-/* =========================================================
    WEBRTC VARIABLES
 ========================================================= */
 
@@ -1411,11 +1397,21 @@ let websocket = null;
 
 let localParticipantId = null;
 
+let isHost = false;
+
 let cameraEnabled = false;
 
 let microphoneEnabled = false;
 
 let screenSharing = false;
+
+let waitingInRoom = false;
+
+let waitingRoomEnabled = true;
+
+let meetingLocked = false;
+
+let unreadMessages = 0;
 
 
 /* =========================================================
@@ -1430,6 +1426,13 @@ const peerConnections = {};
 ========================================================= */
 
 const remoteStreams = {};
+
+
+/* =========================================================
+   ICE QUEUE
+========================================================= */
+
+const pendingIceCandidates = {};
 
 
 /* =========================================================
@@ -1456,39 +1459,27 @@ const rtcConfiguration = {
 
 
 /* =========================================================
-   CHAT VARIABLES
-========================================================= */
-
-let unreadMessages = 0;
-
-
-/* =========================================================
    TOAST
 ========================================================= */
 
 function showToast(message) {
 
     const toast =
-        document.getElementById(
-            "toast"
-        );
+        document.getElementById("toast");
 
+    if (!toast) {
+        return;
+    }
 
     toast.innerText =
         message;
 
-
-    toast.classList.add(
-        "show"
-    );
-
+    toast.classList.add("show");
 
     setTimeout(
         () => {
 
-            toast.classList.remove(
-                "show"
-            );
+            toast.classList.remove("show");
 
         },
         2500
@@ -1501,15 +1492,16 @@ function showToast(message) {
    PARTICIPANT COUNT
 ========================================================= */
 
-function updateParticipantCount(
-    count
-) {
+function updateParticipantCount(count) {
 
     const element =
         document.getElementById(
             "participantCount"
         );
 
+    if (!element) {
+        return;
+    }
 
     element.innerText =
         `👥 ${count} participant${
@@ -1520,7 +1512,7 @@ function updateParticipantCount(
 
 
 /* =========================================================
-   LOCAL VIDEO CARD
+   LOCAL CARD
 ========================================================= */
 
 function createLocalCard() {
@@ -1530,31 +1522,22 @@ function createLocalCard() {
             "videoGrid"
         );
 
-
     if (
         document.getElementById(
             "local-card"
         )
     ) {
-
         return;
-
     }
 
-
     const card =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     card.className =
         "video-card";
 
-
     card.id =
         "local-card";
-
 
     card.innerHTML = `
 
@@ -1566,61 +1549,47 @@ function createLocalCard() {
             playsinline
         ></video>
 
-
         <div
             class="camera-off"
             id="localCameraOff"
         >
 
             <div class="avatar">
-
-                ${
+                ${escapeHTML(
                     localUserName
                         .charAt(0)
                         .toUpperCase()
-                }
-
+                )}
             </div>
-
 
             <div class="user-name">
-
                 ${escapeHTML(localUserName)}
-
             </div>
 
-
             <div class="camera-text">
-
                 Camera is off
-
             </div>
 
         </div>
 
-
         <div class="video-label">
-
             ${escapeHTML(localUserName)} (You)
-
         </div>
 
     `;
 
-
-    grid.appendChild(
-        card
-    );
+    grid.appendChild(card);
 
 }
 
 
 /* =========================================================
-   REMOTE VIDEO CARD
+   REMOTE CARD
 ========================================================= */
 
 function createRemoteCard(
-    participantId
+    participantId,
+    participantName = "Participant"
 ) {
 
     const existing =
@@ -1628,8 +1597,27 @@ function createRemoteCard(
             `remote-${participantId}`
         );
 
-
     if (existing) {
+
+        const label =
+            existing.querySelector(
+                ".video-label"
+            );
+
+        const userName =
+            existing.querySelector(
+                ".user-name"
+            );
+
+        if (label) {
+            label.innerText =
+                participantName;
+        }
+
+        if (userName) {
+            userName.innerText =
+                participantName;
+        }
 
         return existing;
 
@@ -1641,20 +1629,14 @@ function createRemoteCard(
             "videoGrid"
         );
 
-
     const card =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     card.className =
         "video-card";
 
-
     card.id =
         `remote-${participantId}`;
-
 
     card.innerHTML = `
 
@@ -1664,58 +1646,39 @@ function createRemoteCard(
             playsinline
         ></video>
 
-
         <div
             class="camera-off"
             id="placeholder-${participantId}"
         >
 
             <div class="avatar">
-
                 <i class="fa-solid fa-user"></i>
-
             </div>
-
 
             <div class="user-name">
-
-                Participant
-
+                ${escapeHTML(participantName)}
             </div>
-
 
             <div class="camera-text">
-
                 Camera is off
-
             </div>
 
         </div>
 
-
         <div class="video-label">
-
-            Participant
-
+            ${escapeHTML(participantName)}
         </div>
-
 
         <div
             class="connection-status"
             id="status-${participantId}"
         >
-
             Connecting...
-
         </div>
 
     `;
 
-
-    grid.appendChild(
-        card
-    );
-
+    grid.appendChild(card);
 
     return card;
 
@@ -1723,11 +1686,12 @@ function createRemoteCard(
 
 
 /* =========================================================
-   REMOVE REMOTE CARD
+   UPDATE REMOTE NAME
 ========================================================= */
 
-function removeRemoteCard(
-    participantId
+function updateRemoteName(
+    participantId,
+    name
 ) {
 
     const card =
@@ -1735,11 +1699,77 @@ function removeRemoteCard(
             `remote-${participantId}`
         );
 
+    if (!card) {
+        return;
+    }
+
+    const label =
+        card.querySelector(
+            ".video-label"
+        );
+
+    const userName =
+        card.querySelector(
+            ".user-name"
+        );
+
+    if (label) {
+        label.innerText =
+            name;
+    }
+
+    if (userName) {
+        userName.innerText =
+            name;
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE REMOTE
+========================================================= */
+
+function removeRemoteParticipant(
+    participantId
+) {
+
+    if (
+        peerConnections[
+            participantId
+        ]
+    ) {
+
+        try {
+
+            peerConnections[
+                participantId
+            ].close();
+
+        }
+        catch (error) {}
+
+        delete peerConnections[
+            participantId
+        ];
+
+    }
+
+    delete remoteStreams[
+        participantId
+    ];
+
+    delete pendingIceCandidates[
+        participantId
+    ];
+
+    const card =
+        document.getElementById(
+            `remote-${participantId}`
+        );
 
     if (card) {
-
         card.remove();
-
     }
 
 }
@@ -1760,17 +1790,12 @@ function setRemoteStatus(
             `status-${participantId}`
         );
 
-
     if (!status) {
-
         return;
-
     }
-
 
     status.innerText =
         text;
-
 
     if (connected) {
 
@@ -1795,14 +1820,9 @@ function setRemoteStatus(
 ========================================================= */
 
 function createPeerConnection(
-    participantId
+    participantId,
+    participantName = "Participant"
 ) {
-
-    console.log(
-        "Creating peer connection:",
-        participantId
-    );
-
 
     if (
         peerConnections[
@@ -1817,8 +1837,15 @@ function createPeerConnection(
     }
 
 
-    createRemoteCard(
+    console.log(
+        "Creating peer connection:",
         participantId
+    );
+
+
+    createRemoteCard(
+        participantId,
+        participantName
     );
 
 
@@ -1850,13 +1877,17 @@ function createPeerConnection(
         );
 
 
-    remoteVideo.srcObject =
-        remoteStream;
+    if (remoteVideo) {
+
+        remoteVideo.srcObject =
+            remoteStream;
+
+    }
 
 
-    /* -----------------------------------------------------
-       ADD LOCAL TRACKS
-    ----------------------------------------------------- */
+    /* =========================
+       LOCAL TRACKS
+    ========================= */
 
     if (localStream) {
 
@@ -1865,10 +1896,24 @@ function createPeerConnection(
             .forEach(
                 track => {
 
-                    peerConnection.addTrack(
-                        track,
-                        localStream
-                    );
+                    const alreadyAdded =
+                        peerConnection
+                            .getSenders()
+                            .some(
+                                sender =>
+                                    sender.track &&
+                                    sender.track.id ===
+                                    track.id
+                            );
+
+                    if (!alreadyAdded) {
+
+                        peerConnection.addTrack(
+                            track,
+                            localStream
+                        );
+
+                    }
 
                 }
             );
@@ -1876,9 +1921,9 @@ function createPeerConnection(
     }
 
 
-    /* -----------------------------------------------------
-       RECEIVE REMOTE TRACKS
-    ----------------------------------------------------- */
+    /* =========================
+       REMOTE TRACK
+    ========================= */
 
     peerConnection.ontrack =
         function(event) {
@@ -1889,13 +1934,12 @@ function createPeerConnection(
             );
 
 
-            const streams =
-                event.streams;
+            if (
+                event.streams &&
+                event.streams.length > 0
+            ) {
 
-
-            if (streams.length > 0) {
-
-                streams[0]
+                event.streams[0]
                     .getTracks()
                     .forEach(
                         track => {
@@ -1904,11 +1948,10 @@ function createPeerConnection(
                                 remoteStream
                                     .getTracks()
                                     .some(
-                                        existingTrack =>
-                                            existingTrack.id ===
+                                        existing =>
+                                            existing.id ===
                                             track.id
                                     );
-
 
                             if (!exists) {
 
@@ -1922,24 +1965,43 @@ function createPeerConnection(
                     );
 
             }
-            else {
+            else if (event.track) {
 
-                remoteStream.addTrack(
-                    event.track
-                );
+                const exists =
+                    remoteStream
+                        .getTracks()
+                        .some(
+                            existing =>
+                                existing.id ===
+                                event.track.id
+                        );
+
+                if (!exists) {
+
+                    remoteStream.addTrack(
+                        event.track
+                    );
+
+                }
 
             }
 
 
-            remoteVideo.style.display =
-                "block";
+            if (remoteVideo) {
+
+                remoteVideo.srcObject =
+                    remoteStream;
+
+                remoteVideo.style.display =
+                    "block";
+
+            }
 
 
             const placeholder =
                 document.getElementById(
                     `placeholder-${participantId}`
                 );
-
 
             if (placeholder) {
 
@@ -1958,9 +2020,9 @@ function createPeerConnection(
         };
 
 
-    /* -----------------------------------------------------
+    /* =========================
        ICE
-    ----------------------------------------------------- */
+    ========================= */
 
     peerConnection.onicecandidate =
         function(event) {
@@ -1992,9 +2054,9 @@ function createPeerConnection(
         };
 
 
-    /* -----------------------------------------------------
+    /* =========================
        CONNECTION STATE
-    ----------------------------------------------------- */
+    ========================= */
 
     peerConnection.onconnectionstatechange =
         function() {
@@ -2020,7 +2082,7 @@ function createPeerConnection(
             }
 
 
-            if (
+            else if (
                 peerConnection.connectionState ===
                 "connecting"
             ) {
@@ -2033,7 +2095,7 @@ function createPeerConnection(
             }
 
 
-            if (
+            else if (
                 peerConnection.connectionState ===
                 "disconnected"
             ) {
@@ -2046,7 +2108,7 @@ function createPeerConnection(
             }
 
 
-            if (
+            else if (
                 peerConnection.connectionState ===
                 "failed"
             ) {
@@ -2077,6 +2139,9 @@ async function createOfferForParticipant(
     try {
 
         const peerConnection =
+            peerConnections[
+                participantId
+            ] ||
             createPeerConnection(
                 participantId
             );
@@ -2107,7 +2172,7 @@ async function createOfferForParticipant(
                         participantId,
 
                     offer:
-                        offer
+                        peerConnection.localDescription
 
                 })
             );
@@ -2163,6 +2228,11 @@ async function handleOffer(
         );
 
 
+        await flushIceCandidates(
+            senderId
+        );
+
+
         const answer =
             await peerConnection.createAnswer();
 
@@ -2188,7 +2258,7 @@ async function handleOffer(
                         senderId,
 
                     answer:
-                        answer
+                        peerConnection.localDescription
 
                 })
             );
@@ -2250,6 +2320,11 @@ async function handleAnswer(
         );
 
 
+        await flushIceCandidates(
+            senderId
+        );
+
+
         console.log(
             "Answer accepted:",
             senderId
@@ -2287,17 +2362,57 @@ async function handleIceCandidate(
 
         if (!peerConnection) {
 
+            if (
+                !pendingIceCandidates[
+                    senderId
+                ]
+            ) {
+
+                pendingIceCandidates[
+                    senderId
+                ] = [];
+
+            }
+
+            pendingIceCandidates[
+                senderId
+            ].push(candidate);
+
             return;
 
         }
 
 
-        await peerConnection.addIceCandidate(
-            new RTCIceCandidate(
-                candidate
-            )
-        );
+        if (
+            peerConnection.remoteDescription
+        ) {
 
+            await peerConnection.addIceCandidate(
+                new RTCIceCandidate(
+                    candidate
+                )
+            );
+
+        }
+        else {
+
+            if (
+                !pendingIceCandidates[
+                    senderId
+                ]
+            ) {
+
+                pendingIceCandidates[
+                    senderId
+                ] = [];
+
+            }
+
+            pendingIceCandidates[
+                senderId
+            ].push(candidate);
+
+        }
 
     }
     catch (error) {
@@ -2313,28 +2428,112 @@ async function handleIceCandidate(
 
 
 /* =========================================================
+   FLUSH ICE
+========================================================= */
+
+async function flushIceCandidates(
+    participantId
+) {
+
+    const peerConnection =
+        peerConnections[
+            participantId
+        ];
+
+    const candidates =
+        pendingIceCandidates[
+            participantId
+        ] || [];
+
+
+    if (
+        !peerConnection ||
+        !peerConnection.remoteDescription
+    ) {
+
+        return;
+
+    }
+
+
+    for (
+        const candidate
+        of candidates
+    ) {
+
+        try {
+
+            await peerConnection.addIceCandidate(
+                new RTCIceCandidate(
+                    candidate
+                )
+            );
+
+        }
+        catch (error) {
+
+            console.error(
+                "Queued ICE error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    pendingIceCandidates[
+        participantId
+    ] = [];
+
+}
+
+
+/* =========================================================
    CONNECT WEBSOCKET
 ========================================================= */
 
 function connectWebSocket() {
+
+    if (!meetingId || !token) {
+        return;
+    }
+
 
     const websocketProtocol =
         API_URL.startsWith("https://")
             ? "wss:"
             : "ws:";
 
+
     const websocketHost =
-        API_URL.replace(/^https?:\/\//, "");
+        API_URL.replace(
+            /^https?:\/\//,
+            ""
+        );
+
+
+    /*
+     * IMPORTANT:
+     * Backend requires:
+     *
+     * /ws/{meeting_id}?token=JWT
+     */
 
     const websocketURL =
         `${websocketProtocol}//${websocketHost}/ws/${
             encodeURIComponent(meetingId)
+        }?token=${
+            encodeURIComponent(token)
         }`;
 
 
     console.log(
-        "Connecting:",
-        websocketURL
+        "Connecting WebSocket:",
+        websocketURL.replace(
+            token,
+            "TOKEN_HIDDEN"
+        )
     );
 
 
@@ -2344,9 +2543,9 @@ function connectWebSocket() {
         );
 
 
-    /* -----------------------------------------------------
+    /* =========================
        OPEN
-    ----------------------------------------------------- */
+    ========================= */
 
     websocket.onopen =
         function() {
@@ -2355,7 +2554,6 @@ function connectWebSocket() {
                 "WebSocket connected."
             );
 
-
             showToast(
                 "Connected to meeting 🟢"
             );
@@ -2363,9 +2561,9 @@ function connectWebSocket() {
         };
 
 
-    /* -----------------------------------------------------
+    /* =========================
        MESSAGE
-    ----------------------------------------------------- */
+    ========================= */
 
     websocket.onmessage =
         async function(event) {
@@ -2379,14 +2577,14 @@ function connectWebSocket() {
 
 
                 console.log(
-                    "Received:",
+                    "WebSocket message:",
                     message
                 );
 
 
-                /* =========================================
+                /* =========================
                    ROOM INFO
-                ========================================= */
+                ========================= */
 
                 if (
                     message.type ===
@@ -2397,70 +2595,173 @@ function connectWebSocket() {
                         message.participant_id;
 
 
+                    isHost =
+                        message.is_host === true;
+
+
+                    waitingRoomEnabled =
+                        message.waiting_room === true;
+
+
+                    meetingLocked =
+                        message.locked === true;
+
+
                     updateParticipantCount(
                         message.participants
                     );
 
 
-                    if (
-                        message.existing_participants
-                    ) {
+                    if (isHost) {
 
-                        for (
-                            const participantId
-                            of message.existing_participants
-                        ) {
+                        document.getElementById(
+                            "adminBtn"
+                        ).style.display =
+                            "block";
 
-                            createPeerConnection(
-                                participantId
-                            );
-
-
-                            setTimeout(
-                                () => {
-
-                                    createOfferForParticipant(
-                                        participantId
-                                    );
-
-                                },
-                                500
-                            );
-
-                        }
+                        showToast(
+                            "👑 You are the meeting host"
+                        );
 
                     }
+
+
+                    /*
+                     * Existing participants.
+                     */
+
+                    const details =
+                        message.existing_participant_details ||
+                        [];
+
+
+                    for (
+                        const participant
+                        of details
+                    ) {
+
+                        createPeerConnection(
+                            participant.participant_id,
+                            participant.name
+                        );
+
+                    }
+
+
+                    /*
+                     * Create offers to
+                     * existing participants.
+                     */
+
+                    for (
+                        const participant
+                        of details
+                    ) {
+
+                        setTimeout(
+                            () => {
+
+                                createOfferForParticipant(
+                                    participant.participant_id
+                                );
+
+                            },
+                            300
+                        );
+
+                    }
+
+
+                    updateAdminParticipantList(
+                        message.participant_details ||
+                        []
+                    );
 
                 }
 
 
-                /* =========================================
-                   USER JOINED
-                ========================================= */
+                /* =========================
+                   WAITING ROOM
+                ========================= */
 
                 else if (
                     message.type ===
-                    "user_joined"
+                    "waiting_room"
                 ) {
 
-                    const participantId =
+                    localParticipantId =
                         message.participant_id;
 
 
-                    updateParticipantCount(
-                        message.participants
+                    waitingInRoom =
+                        true;
+
+
+                    document.getElementById(
+                        "waitingMessage"
+                    ).innerText =
+                        message.message ||
+                        "The host will let you into the meeting.";
+
+
+                    document.getElementById(
+                        "waitingScreen"
+                    ).classList.add(
+                        "show"
                     );
 
 
                     showToast(
-                        "Someone joined the meeting 👋"
+                        "Waiting for host approval..."
+                    );
+
+                }
+
+
+                /* =========================
+                   ADMITTED
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "admitted"
+                ) {
+
+                    waitingInRoom =
+                        false;
+
+
+                    document.getElementById(
+                        "waitingScreen"
+                    ).classList.remove(
+                        "show"
                     );
 
 
-                    if (participantId) {
+                    showToast(
+                        "You have been admitted! 🎉"
+                    );
 
-                        createRemoteCard(
-                            participantId
+                }
+
+
+                /* =========================
+                   JOIN REQUEST
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "join_request"
+                ) {
+
+                    if (isHost) {
+
+                        addWaitingUser(
+                            message
+                        );
+
+                        showToast(
+                            `${message.name} is waiting to join.`
                         );
 
                     }
@@ -2468,9 +2769,49 @@ function connectWebSocket() {
                 }
 
 
-                /* =========================================
+                /* =========================
+                   USER JOINED
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "user_joined"
+                ) {
+
+                    updateParticipantCount(
+                        message.participants
+                    );
+
+
+                    if (
+                        message.participant_id
+                    ) {
+
+                        createRemoteCard(
+                            message.participant_id,
+                            message.name ||
+                            "Participant"
+                        );
+
+                    }
+
+
+                    updateAdminParticipantList();
+
+
+                    showToast(
+                        `${
+                            message.name ||
+                            "Someone"
+                        } joined the meeting 👋`
+                    );
+
+                }
+
+
+                /* =========================
                    OFFER
-                ========================================= */
+                ========================= */
 
                 else if (
                     message.type ===
@@ -2485,9 +2826,9 @@ function connectWebSocket() {
                 }
 
 
-                /* =========================================
+                /* =========================
                    ANSWER
-                ========================================= */
+                ========================= */
 
                 else if (
                     message.type ===
@@ -2502,9 +2843,9 @@ function connectWebSocket() {
                 }
 
 
-                /* =========================================
+                /* =========================
                    ICE
-                ========================================= */
+                ========================= */
 
                 else if (
                     message.type ===
@@ -2519,81 +2860,49 @@ function connectWebSocket() {
                 }
 
 
-                /* =========================================
+                /* =========================
                    USER LEFT
-                ========================================= */
+                ========================= */
 
                 else if (
                     message.type ===
                     "user_left"
                 ) {
 
-                    const participantId =
-                        message.participant_id;
-
-
                     updateParticipantCount(
                         message.participants
                     );
 
 
-                    showToast(
-                        "Participant left the meeting."
+                    removeRemoteParticipant(
+                        message.participant_id
                     );
 
 
-                    if (
-                        participantId &&
-                        peerConnections[
-                            participantId
-                        ]
-                    ) {
-
-                        peerConnections[
-                            participantId
-                        ].close();
+                    updateAdminParticipantList();
 
 
-                        delete peerConnections[
-                            participantId
-                        ];
-
-                    }
-
-
-                    if (participantId) {
-
-                        delete remoteStreams[
-                            participantId
-                        ];
-
-
-                        removeRemoteCard(
-                            participantId
-                        );
-
-                    }
+                    showToast(
+                        `${
+                            message.name ||
+                            "Participant"
+                        } left the meeting.`
+                    );
 
                 }
 
 
-                /* =========================================
-                   CHAT MESSAGE
-                ========================================= */
+                /* =========================
+                   CHAT
+                ========================= */
 
                 else if (
                     message.type ===
                     "chat"
                 ) {
 
-                    /*
-                     * Ignore our own message if the backend
-                     * ever sends it back.
-                     */
-
                     if (
                         message.sender_id &&
-                        localParticipantId &&
                         message.sender_id ===
                             localParticipantId
                     ) {
@@ -2604,22 +2913,13 @@ function connectWebSocket() {
 
 
                     addChatMessage(
-
                         message.sender_name ||
                         "Participant",
-
                         message.text ||
                         "",
-
                         false
-
                     );
 
-
-                    /*
-                     * Show notification only when
-                     * chat panel is closed.
-                     */
 
                     const chatPanel =
                         document.getElementById(
@@ -2648,6 +2948,211 @@ function connectWebSocket() {
 
                 }
 
+
+                /* =========================
+                   WAITING UPDATED
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "waiting_updated"
+                ) {
+
+                    renderWaitingList(
+                        message.waiting ||
+                        []
+                    );
+
+                }
+
+
+                /* =========================
+                   WAITING ROOM STATE
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "waiting_room_state"
+                ) {
+
+                    waitingRoomEnabled =
+                        message.enabled === true;
+
+                    meetingLocked =
+                        message.locked === true;
+
+                    showToast(
+                        waitingRoomEnabled
+                            ? "Waiting room enabled"
+                            : "Waiting room disabled"
+                    );
+
+                }
+
+
+                /* =========================
+                   LOCK MEETING
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "lock_meeting"
+                ) {
+
+                    meetingLocked =
+                        message.locked === true;
+
+                    showToast(
+                        meetingLocked
+                            ? "Meeting locked 🔒"
+                            : "Meeting unlocked 🔓"
+                    );
+
+                }
+
+
+                /* =========================
+                   MUTE
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "mute_participant"
+                ) {
+
+                    if (
+                        message.target_id ===
+                        localParticipantId
+                    ) {
+
+                        if (localStream) {
+
+                            localStream
+                                .getAudioTracks()
+                                .forEach(
+                                    track => {
+
+                                        track.enabled =
+                                            false;
+
+                                    }
+                                );
+
+                        }
+
+                        microphoneEnabled =
+                            false;
+
+                        document.getElementById(
+                            "micBtn"
+                        ).classList.remove(
+                            "active"
+                        );
+
+                        showToast(
+                            "The host muted your microphone."
+                        );
+
+                    }
+
+                }
+
+
+                /* =========================
+                   END MEETING
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "end_meeting"
+                ) {
+
+                    showToast(
+                        message.message ||
+                        "Meeting ended."
+                    );
+
+
+                    cleanupMeeting();
+
+
+                    setTimeout(
+                        () => {
+
+                            window.location.href =
+                                "dashboard.html";
+
+                        },
+                        1200
+                    );
+
+                }
+
+
+                /* =========================
+                   REMOVED
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "removed"
+                ) {
+
+                    alert(
+                        message.message ||
+                        "You were removed from the meeting."
+                    );
+
+
+                    cleanupMeeting();
+
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }
+
+
+                /* =========================
+                   REJECTED
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "rejected"
+                ) {
+
+                    alert(
+                        message.message ||
+                        "The host rejected your request."
+                    );
+
+
+                    cleanupMeeting();
+
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }
+
+
+                /* =========================
+                   ERROR
+                ========================= */
+
+                else if (
+                    message.type ===
+                    "error"
+                ) {
+
+                    showToast(
+                        message.message ||
+                        "Something went wrong."
+                    );
+
+                }
+
             }
             catch (error) {
 
@@ -2661,9 +3166,9 @@ function connectWebSocket() {
         };
 
 
-    /* -----------------------------------------------------
+    /* =========================
        ERROR
-    ----------------------------------------------------- */
+    ========================= */
 
     websocket.onerror =
         function(error) {
@@ -2675,21 +3180,23 @@ function connectWebSocket() {
 
 
             showToast(
-                "WebSocket connection error."
+                "WebSocket connection error ❌"
             );
 
         };
 
 
-    /* -----------------------------------------------------
+    /* =========================
        CLOSE
-    ----------------------------------------------------- */
+    ========================= */
 
     websocket.onclose =
-        function() {
+        function(event) {
 
             console.log(
-                "WebSocket closed."
+                "WebSocket closed:",
+                event.code,
+                event.reason
             );
 
         };
@@ -2748,13 +3255,16 @@ async function startLocalMedia(
             );
 
 
-        localVideo.srcObject =
-            localStream;
+        if (localVideo) {
+
+            localVideo.srcObject =
+                localStream;
+
+        }
 
 
         /*
-         * Add new tracks to existing
-         * peer connections.
+         * Add tracks to existing peers.
          */
 
         Object.values(
@@ -2772,8 +3282,9 @@ async function startLocalMedia(
                                     .getSenders()
                                     .some(
                                         sender =>
-                                            sender.track ===
-                                            track
+                                            sender.track &&
+                                            sender.track.kind ===
+                                            track.kind
                                     );
 
 
@@ -2805,6 +3316,28 @@ async function startLocalMedia(
 
 
         return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   RENEGOTIATE ALL PEERS
+========================================================= */
+
+async function renegotiateAll() {
+
+    for (
+        const participantId
+        of Object.keys(
+            peerConnections
+        )
+    ) {
+
+        await createOfferForParticipant(
+            participantId
+        );
 
     }
 
@@ -2849,15 +3382,22 @@ async function toggleCamera() {
             );
 
 
-        document.getElementById(
-            "localVideo"
-        ).style.display =
+        const localVideo =
+            document.getElementById(
+                "localVideo"
+            );
+
+
+        const cameraOff =
+            document.getElementById(
+                "localCameraOff"
+            );
+
+
+        localVideo.style.display =
             "block";
 
-
-        document.getElementById(
-            "localCameraOff"
-        ).style.display =
+        cameraOff.style.display =
             "none";
 
 
@@ -2877,22 +3417,7 @@ async function toggleCamera() {
         );
 
 
-        /*
-         * Renegotiate.
-         */
-
-        for (
-            const participantId
-            of Object.keys(
-                peerConnections
-            )
-        ) {
-
-            await createOfferForParticipant(
-                participantId
-            );
-
-        }
+        await renegotiateAll();
 
     }
     else {
@@ -2999,22 +3524,7 @@ async function toggleMicrophone() {
         );
 
 
-        /*
-         * Renegotiate.
-         */
-
-        for (
-            const participantId
-            of Object.keys(
-                peerConnections
-            )
-        ) {
-
-            await createOfferForParticipant(
-                participantId
-            );
-
-        }
+        await renegotiateAll();
 
     }
     else {
@@ -3108,10 +3618,6 @@ async function shareScreen() {
         );
 
 
-        /*
-         * Replace video track.
-         */
-
         for (
             const peerConnection
             of Object.values(
@@ -3148,14 +3654,13 @@ async function shareScreen() {
         }
 
 
+        await renegotiateAll();
+
+
         showToast(
             "Screen sharing started 🖥️"
         );
 
-
-        /* -------------------------------------------------
-           SCREEN SHARE STOPPED
-        ------------------------------------------------- */
 
         screenTrack.onended =
             async function() {
@@ -3215,16 +3720,6 @@ async function shareScreen() {
                         localVideo.srcObject =
                             localStream;
 
-
-                        localVideo.style.display =
-                            "block";
-
-
-                        document.getElementById(
-                            "localCameraOff"
-                        ).style.display =
-                            "none";
-
                     }
 
                 }
@@ -3233,13 +3728,15 @@ async function shareScreen() {
                     localVideo.style.display =
                         "none";
 
-
                     document.getElementById(
                         "localCameraOff"
                     ).style.display =
                         "block";
 
                 }
+
+
+                await renegotiateAll();
 
 
                 showToast(
@@ -3277,17 +3774,14 @@ function toggleChat() {
     );
 
 
-    /*
-     * When opening chat, clear notification.
-     */
-
     if (
         chatPanel.classList.contains(
             "open"
         )
     ) {
 
-        unreadMessages = 0;
+        unreadMessages =
+            0;
 
         updateChatBadge();
 
@@ -3309,7 +3803,7 @@ function toggleChat() {
 
 
 /* =========================================================
-   SEND CHAT MESSAGE
+   SEND CHAT
 ========================================================= */
 
 function sendChatMessage() {
@@ -3325,9 +3819,7 @@ function sendChatMessage() {
 
 
     if (!text) {
-
         return;
-
     }
 
 
@@ -3346,27 +3838,6 @@ function sendChatMessage() {
     }
 
 
-    const message = {
-
-        type:
-            "chat",
-
-        sender_id:
-            localParticipantId,
-
-        sender_name:
-            localUserName,
-
-        text:
-            text
-
-    };
-
-
-    /*
-     * Show our own message immediately.
-     */
-
     addChatMessage(
         localUserName,
         text,
@@ -3374,14 +3845,22 @@ function sendChatMessage() {
     );
 
 
-    /*
-     * Send through WebSocket.
-     */
-
     websocket.send(
-        JSON.stringify(
-            message
-        )
+        JSON.stringify({
+
+            type:
+                "chat",
+
+            sender_id:
+                localParticipantId,
+
+            sender_name:
+                localUserName,
+
+            text:
+                text
+
+        })
     );
 
 
@@ -3414,9 +3893,7 @@ function addChatMessage(
 
 
     if (emptyChat) {
-
         emptyChat.remove();
-
     }
 
 
@@ -3460,11 +3937,6 @@ function addChatMessage(
         "message-bubble";
 
 
-    /*
-     * Use textContent instead of innerHTML
-     * so user messages cannot inject HTML.
-     */
-
     bubble.textContent =
         text;
 
@@ -3502,10 +3974,6 @@ function addChatMessage(
         message
     );
 
-
-    /*
-     * Scroll to newest message.
-     */
 
     messages.scrollTop =
         messages.scrollHeight;
@@ -3569,7 +4037,7 @@ function getCurrentTime() {
 
 
 /* =========================================================
-   ENTER TO SEND
+   ENTER CHAT
 ========================================================= */
 
 document.getElementById(
@@ -3594,22 +4062,712 @@ document.getElementById(
 
 
 /* =========================================================
-   ESCAPE HTML
+   WAITING ROOM - HOST
 ========================================================= */
 
-function escapeHTML(text) {
+const waitingUsers = {};
 
-    const div =
-        document.createElement(
-            "div"
+
+function addWaitingUser(
+    participant
+) {
+
+    waitingUsers[
+        participant.participant_id
+    ] =
+        participant;
+
+
+    renderWaitingList();
+
+}
+
+
+function renderWaitingList(
+    serverWaiting = null
+) {
+
+    const list =
+        document.getElementById(
+            "waitingList"
         );
 
 
-    div.textContent =
-        text;
+    if (serverWaiting) {
+
+        Object.keys(
+            waitingUsers
+        ).forEach(
+            id => {
+
+                if (
+                    !serverWaiting.some(
+                        user =>
+                            user.participant_id ===
+                            id
+                    )
+                ) {
+
+                    delete waitingUsers[id];
+
+                }
+
+            }
+        );
 
 
-    return div.innerHTML;
+        serverWaiting.forEach(
+            user => {
+
+                waitingUsers[
+                    user.participant_id
+                ] =
+                    user;
+
+            }
+        );
+
+    }
+
+
+    const users =
+        Object.values(
+            waitingUsers
+        );
+
+
+    if (users.length === 0) {
+
+        list.innerHTML = `
+
+            <div
+                style="
+                    color:#71798b;
+                    font-size:12px;
+                "
+            >
+                No one is waiting.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        "";
+
+
+    users.forEach(
+        user => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "waiting-user";
+
+
+            item.innerHTML = `
+
+                <div class="waiting-user-name">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    ${escapeHTML(
+                        user.name ||
+                        "Participant"
+                    )}
+
+                </div>
+
+                <div class="waiting-actions">
+
+                    <button
+                        class="admit-btn"
+                        onclick="admitParticipant('${
+                            user.participant_id
+                        }')"
+                    >
+                        Admit
+                    </button>
+
+                    <button
+                        class="reject-btn"
+                        onclick="rejectParticipant('${
+                            user.participant_id
+                        }')"
+                    >
+                        Reject
+                    </button>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ADMIT PARTICIPANT
+========================================================= */
+
+function admitParticipant(
+    participantId
+) {
+
+    if (!isHost) {
+        return;
+    }
+
+
+    if (
+        !websocket ||
+        websocket.readyState !==
+            WebSocket.OPEN
+    ) {
+        return;
+    }
+
+
+    websocket.send(
+        JSON.stringify({
+
+            type:
+                "admit_participant",
+
+            target_id:
+                participantId
+
+        })
+    );
+
+
+    delete waitingUsers[
+        participantId
+    ];
+
+
+    renderWaitingList();
+
+
+    showToast(
+        "Participant admitted."
+    );
+
+}
+
+
+/* =========================================================
+   REJECT PARTICIPANT
+========================================================= */
+
+function rejectParticipant(
+    participantId
+) {
+
+    if (!isHost) {
+        return;
+    }
+
+
+    websocket.send(
+        JSON.stringify({
+
+            type:
+                "reject_participant",
+
+            target_id:
+                participantId
+
+        })
+    );
+
+
+    delete waitingUsers[
+        participantId
+    ];
+
+
+    renderWaitingList();
+
+
+    showToast(
+        "Participant rejected."
+    );
+
+}
+
+
+/* =========================================================
+   TOGGLE WAITING ROOM
+========================================================= */
+
+function toggleWaitingRoom() {
+
+    if (!isHost) {
+
+        showToast(
+            "Only the host can do this."
+        );
+
+        return;
+
+    }
+
+
+    waitingRoomEnabled =
+        !waitingRoomEnabled;
+
+
+    websocket.send(
+        JSON.stringify({
+
+            type:
+                "waiting_room_toggle",
+
+            enabled:
+                waitingRoomEnabled
+
+        })
+    );
+
+
+    showToast(
+        waitingRoomEnabled
+            ? "Waiting room enabled"
+            : "Waiting room disabled"
+    );
+
+}
+
+
+/* =========================================================
+   LOCK MEETING
+========================================================= */
+
+function toggleLockMeeting() {
+
+    if (!isHost) {
+
+        showToast(
+            "Only the host can do this."
+        );
+
+        return;
+
+    }
+
+
+    meetingLocked =
+        !meetingLocked;
+
+
+    websocket.send(
+        JSON.stringify({
+
+            type:
+                "lock_meeting",
+
+            locked:
+                meetingLocked
+
+        })
+    );
+
+
+    showToast(
+        meetingLocked
+            ? "Meeting locked 🔒"
+            : "Meeting unlocked 🔓"
+    );
+
+}
+
+
+/* =========================================================
+   END MEETING
+========================================================= */
+
+function endMeeting() {
+
+    if (!isHost) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "End this meeting for everyone?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    websocket.send(
+        JSON.stringify({
+
+            type:
+                "end_meeting"
+
+        })
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN PARTICIPANT LIST
+========================================================= */
+
+function updateAdminParticipantList(
+    participants = null
+) {
+
+    const container =
+        document.getElementById(
+            "participantAdminList"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (
+        participants &&
+        participants.length
+    ) {
+
+        container.innerHTML =
+            "";
+
+
+        participants.forEach(
+            participant => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.style.cssText =
+                    `
+                    background:#202634;
+                    padding:10px;
+                    border-radius:9px;
+                    margin-bottom:7px;
+                    font-size:12px;
+                    `;
+
+
+                item.innerHTML = `
+
+                    <div style="font-weight:600;">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        ${escapeHTML(
+                            participant.name
+                        )}
+
+                        ${
+                            participant.is_host
+                                ? " 👑"
+                                : ""
+                        }
+
+                    </div>
+
+                `;
+
+
+                if (
+                    !participant.is_host &&
+                    participant.participant_id !==
+                        localParticipantId
+                ) {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.innerText =
+                        "Remove";
+
+
+                    button.style.cssText =
+                        `
+                        margin-top:7px;
+                        width:100%;
+                        border:none;
+                        padding:6px;
+                        border-radius:7px;
+                        background:#dc2626;
+                        color:white;
+                        cursor:pointer;
+                        `;
+
+
+                    button.onclick =
+                        function() {
+
+                            removeParticipant(
+                                participant.participant_id
+                            );
+
+                        };
+
+
+                    item.appendChild(
+                        button
+                    );
+
+                }
+
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
+
+    }
+    else {
+
+        container.innerHTML = `
+
+            <div
+                style="
+                    color:#71798b;
+                    font-size:12px;
+                "
+            >
+                Participant list will appear here.
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE PARTICIPANT
+========================================================= */
+
+function removeParticipant(
+    participantId
+) {
+
+    if (!isHost) {
+        return;
+    }
+
+
+    websocket.send(
+        JSON.stringify({
+
+            type:
+                "remove_participant",
+
+            target_id:
+                participantId
+
+        })
+    );
+
+
+    showToast(
+        "Participant removed."
+    );
+
+}
+
+
+/* =========================================================
+   TOGGLE ADMIN PANEL
+========================================================= */
+
+function toggleAdminPanel() {
+
+    if (!isHost) {
+
+        showToast(
+            "Only the host can access these controls."
+        );
+
+        return;
+
+    }
+
+
+    const panel =
+        document.getElementById(
+            "adminPanel"
+        );
+
+
+    panel.classList.toggle(
+        "open"
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE ADMIN WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const panel =
+            document.getElementById(
+                "adminPanel"
+            );
+
+        const button =
+            document.getElementById(
+                "adminBtn"
+            );
+
+
+        if (
+            !panel ||
+            !button
+        ) {
+            return;
+        }
+
+
+        if (
+            panel.classList.contains(
+                "open"
+            ) &&
+            !panel.contains(
+                event.target
+            ) &&
+            !button.contains(
+                event.target
+            )
+        ) {
+
+            panel.classList.remove(
+                "open"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LEAVE WAITING ROOM
+========================================================= */
+
+function leaveWaitingRoom() {
+
+    if (
+        websocket &&
+        websocket.readyState ===
+            WebSocket.OPEN
+    ) {
+
+        websocket.send(
+            JSON.stringify({
+
+                type:
+                    "leave_waiting"
+
+            })
+        );
+
+    }
+
+
+    cleanupMeeting();
+
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+
+/* =========================================================
+   CLEANUP
+========================================================= */
+
+function cleanupMeeting() {
+
+    if (localStream) {
+
+        localStream
+            .getTracks()
+            .forEach(
+                track => {
+
+                    track.stop();
+
+                }
+            );
+
+        localStream =
+            null;
+
+    }
+
+
+    Object.values(
+        peerConnections
+    ).forEach(
+        peerConnection => {
+
+            try {
+                peerConnection.close();
+            }
+            catch (error) {}
+
+        }
+    );
+
+
+    if (websocket) {
+
+        try {
+            websocket.close();
+        }
+        catch (error) {}
+
+        websocket =
+            null;
+
+    }
 
 }
 
@@ -3627,63 +4785,12 @@ function leaveMeeting() {
 
 
     if (!confirmed) {
-
         return;
-
     }
 
 
-    /*
-     * Stop local media.
-     */
+    cleanupMeeting();
 
-    if (localStream) {
-
-        localStream
-            .getTracks()
-            .forEach(
-                track => {
-
-                    track.stop();
-
-                }
-            );
-
-    }
-
-
-    /*
-     * Close peer connections.
-     */
-
-    Object.values(
-        peerConnections
-    ).forEach(
-        peerConnection => {
-
-            peerConnection.close();
-
-        }
-    );
-
-
-    /*
-     * Close WebSocket.
-     */
-
-    if (websocket) {
-
-        websocket.close();
-
-        websocket =
-            null;
-
-    }
-
-
-    /*
-     * Return dashboard.
-     */
 
     window.location.href =
         "dashboard.html";
@@ -3719,7 +4826,10 @@ window.addEventListener(
         ).forEach(
             peerConnection => {
 
-                peerConnection.close();
+                try {
+                    peerConnection.close();
+                }
+                catch (error) {}
 
             }
         );
@@ -3727,12 +4837,36 @@ window.addEventListener(
 
         if (websocket) {
 
-            websocket.close();
+            try {
+                websocket.close();
+            }
+            catch (error) {}
 
         }
 
     }
 );
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        String(text);
+
+
+    return div.innerHTML;
+
+}
 
 
 /* =========================================================
@@ -3742,20 +4876,12 @@ window.addEventListener(
 function initializeMeeting() {
 
     console.log(
-        "Initializing Null Meeting..."
+        "Initializing NULL MEETING..."
     );
 
 
-    /*
-     * Create local participant card.
-     */
-
     createLocalCard();
 
-
-    /*
-     * Connect WebSocket.
-     */
 
     connectWebSocket();
 
@@ -3763,7 +4889,7 @@ function initializeMeeting() {
 
 
 /* =========================================================
-   START NULL MEETING
+   START
 ========================================================= */
 
 initializeMeeting();
