@@ -299,7 +299,7 @@ async function registerUser() {
 
         const response =
             await fetch(
-                "http://127.0.0.1:8000/register",
+                `${API_URL}/register`,
                 {
 
                     method: "POST",
@@ -405,7 +405,7 @@ async function loginUser() {
 
         const response =
             await fetch(
-                "http://127.0.0.1:8000/login",
+                `${API_URL}/login`,
                 {
 
                     method: "POST",
