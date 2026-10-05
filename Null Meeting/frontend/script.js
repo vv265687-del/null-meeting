@@ -1,670 +1,538 @@
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+```javascript
+// ============================================================
+// NULL MEETING - FRONTEND API CONNECTION
+// ============================================================
+
+// IMPORTANT:
+// Production FastAPI backend on Render
 const API_URL = "https://null-meeting.onrender.com";
-function toggleMenu() {
-
-    const menu =
-        document.getElementById(
-            "mobileMenu"
-        );
-
-    if (!menu) {
-        return;
-    }
-
-    menu.classList.toggle("show");
-
-}
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+// ============================================================
+// HELPER: SHOW MESSAGE
+// ============================================================
 
-const modalOverlay =
-    document.getElementById(
-        "modalOverlay"
-    );
+function showMessage(message, type = "error") {
+    // Try common message elements
+    const messageBox =
+        document.getElementById("message") ||
+        document.getElementById("error-message") ||
+        document.getElementById("messageBox") ||
+        document.getElementById("statusMessage");
 
-const modalContent =
-    document.getElementById(
-        "modalContent"
-    );
+    if (messageBox) {
+        messageBox.textContent = message;
+        messageBox.style.display = "block";
 
-
-function openModal(content) {
-
-    if (!modalOverlay ||
-        !modalContent) {
-
-        return;
-
-    }
-
-    modalContent.innerHTML =
-        content;
-
-    modalOverlay.classList.add(
-        "show"
-    );
-
-}
-
-
-function closeModal() {
-
-    if (!modalOverlay) {
-        return;
-    }
-
-    modalOverlay.classList.remove(
-        "show"
-    );
-
-}
-
-
-if (modalOverlay) {
-
-    modalOverlay.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target ===
-                modalOverlay
-            ) {
-
-                closeModal();
-
-            }
-
+        if (type === "success") {
+            messageBox.style.color = "green";
+        } else {
+            messageBox.style.color = "red";
         }
-    );
-
-}
-
-
-/* =====================================================
-   LOGIN MODAL
-===================================================== */
-
-function openLogin() {
-
-    openModal(`
-
-        <h2>Welcome back 👋</h2>
-
-        <p class="modal-subtitle">
-            Login to your PROJECT-X account.
-        </p>
-
-        <div class="form-group">
-
-            <label>Email</label>
-
-            <input
-                type="email"
-                id="loginEmail"
-                placeholder="Enter your email"
-            >
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Password</label>
-
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter your password"
-            >
-
-        </div>
-
-        <button
-            class="modal-submit"
-            onclick="loginUser()"
-        >
-
-            Login
-
-        </button>
-
-    `);
-
-}
-
-
-/* =====================================================
-   REGISTER MODAL
-===================================================== */
-
-function openRegister() {
-
-    openModal(`
-
-        <h2>Create your account 🚀</h2>
-
-        <p class="modal-subtitle">
-            Join PROJECT-X today.
-        </p>
-
-        <div class="form-group">
-
-            <label>Full Name</label>
-
-            <input
-                type="text"
-                id="registerName"
-                placeholder="Your name"
-            >
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Email</label>
-
-            <input
-                type="email"
-                id="registerEmail"
-                placeholder="you@example.com"
-            >
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Password</label>
-
-            <input
-                type="password"
-                id="registerPassword"
-                placeholder="Create password"
-            >
-
-        </div>
-
-        <button
-            class="modal-submit"
-            onclick="registerUser()"
-        >
-
-            Create Account
-
-        </button>
-
-    `);
-
-}
-
-
-/* =====================================================
-   CREATE MEETING FROM HOME
-===================================================== */
-
-function openCreateMeeting() {
-
-    const token =
-        localStorage.getItem(
-            "access_token"
-        );
-
-
-    if (!token) {
-
-        openLogin();
-
-        return;
-
+    } else {
+        alert(message);
     }
-
-
-    window.location.href =
-        "dashboard.html";
-
 }
 
 
-/* =====================================================
-   JOIN MEETING FROM HOME
-===================================================== */
+// ============================================================
+// HELPER: CHECK FASTAPI CONNECTION
+// ============================================================
 
-function openJoinMeeting() {
+async function checkFastAPI() {
+    try {
+        const response = await fetch(`${API_URL}/`, {
+            method: "GET"
+        });
 
-    const token =
-        localStorage.getItem(
-            "access_token"
-        );
+        if (response.ok) {
+            console.log("✅ FastAPI connected successfully");
+            return true;
+        }
 
+        console.log("⚠️ FastAPI responded:", response.status);
+        return false;
 
-    if (!token) {
-
-        openLogin();
-
-        return;
-
+    } catch (error) {
+        console.error("❌ FastAPI connection failed:", error);
+        return false;
     }
-
-
-    window.location.href =
-        "dashboard.html";
-
 }
 
 
-/* =====================================================
-   REGISTER
-===================================================== */
+// ============================================================
+// REGISTER
+// ============================================================
 
 async function registerUser() {
 
-    const name =
-        document.getElementById(
-            "registerName"
-        ).value.trim();
+    // Change these IDs ONLY if your HTML uses different IDs
+    const nameInput =
+        document.getElementById("name") ||
+        document.getElementById("register-name") ||
+        document.getElementById("username");
 
+    const emailInput =
+        document.getElementById("email") ||
+        document.getElementById("register-email");
 
-    const email =
-        document.getElementById(
-            "registerEmail"
-        ).value.trim();
+    const passwordInput =
+        document.getElementById("password") ||
+        document.getElementById("register-password");
 
-
-    const password =
-        document.getElementById(
-            "registerPassword"
-        ).value;
-
-
-    if (
-        !name ||
-        !email ||
-        !password
-    ) {
-
-        alert(
-            "Please fill all fields."
-        );
-
+    if (!nameInput || !emailInput || !passwordInput) {
+        console.error("❌ Register input elements not found");
+        showMessage("Register form fields not found.");
         return;
-
     }
 
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    // Validation
+    if (!name || !email || !password) {
+        showMessage("Please fill all fields.");
+        return;
+    }
+
+    if (password.length < 6) {
+        showMessage("Password must contain at least 6 characters.");
+        return;
+    }
+
+    console.log("📤 Sending register request to:", `${API_URL}/register`);
 
     try {
 
-        const response =
-            await fetch(
-                "http://0.0.0.0:10000 ",
-                {
+        const response = await fetch(`${API_URL}/register`, {
+            method: "POST",
 
-                    method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-                    headers: {
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            })
+        });
 
-                        "Content-Type":
-                            "application/json"
+        console.log("📥 Register response status:", response.status);
 
-                    },
+        const contentType = response.headers.get("content-type") || "";
 
-                    body:
-                        JSON.stringify({
+        let data;
 
-                            name: name,
+        if (contentType.includes("application/json")) {
+            data = await response.json();
+        } else {
+            data = await response.text();
+        }
 
-                            email: email,
-
-                            password: password
-
-                        })
-
-                }
-            );
-
-
-        const data =
-            await response.json();
+        console.log("📥 Register response:", data);
 
 
-        if (!response.ok) {
+        // SUCCESS
+        if (response.ok) {
 
-            alert(
+            showMessage(
+                data.message ||
                 data.detail ||
-                "Registration failed."
+                "Account created successfully!",
+                "success"
             );
+
+            // Clear form
+            nameInput.value = "";
+            emailInput.value = "";
+            passwordInput.value = "";
+
+            // Optional redirect
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1200);
 
             return;
-
         }
 
 
-        alert(
-            "Account created successfully! 🎉"
+        // FASTAPI ERROR
+        if (response.status === 422) {
+
+            if (Array.isArray(data.detail)) {
+
+                const errors = data.detail
+                    .map(error => {
+                        return error.msg || "Invalid input";
+                    })
+                    .join("\n");
+
+                showMessage(errors);
+
+            } else {
+                showMessage(
+                    data.detail ||
+                    "Invalid registration data."
+                );
+            }
+
+            return;
+        }
+
+
+        if (response.status === 400) {
+            showMessage(
+                data.detail ||
+                "This account may already exist."
+            );
+
+            return;
+        }
+
+
+        if (response.status === 500) {
+            console.error("❌ FastAPI returned 500:", data);
+
+            showMessage(
+                "Server error. FastAPI received the request but could not process it."
+            );
+
+            return;
+        }
+
+
+        showMessage(
+            data.detail ||
+            data.message ||
+            `Registration failed. Server returned ${response.status}.`
         );
 
+    } catch (error) {
 
-        closeModal();
+        console.error("❌ REGISTER ERROR:", error);
 
-
-        // Automatically open login
-
-        openLogin();
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Cannot connect to FastAPI."
+        showMessage(
+            "FastAPI not connected. Please check the backend connection."
         );
-
     }
-
 }
 
 
-/* =====================================================
-   LOGIN
-===================================================== */
+// ============================================================
+// LOGIN
+// ============================================================
 
 async function loginUser() {
 
-    const email =
-        document.getElementById(
-            "loginEmail"
-        ).value.trim();
+    // Change these IDs ONLY if your HTML uses different IDs
+    const emailInput =
+        document.getElementById("email") ||
+        document.getElementById("login-email");
 
+    const passwordInput =
+        document.getElementById("password") ||
+        document.getElementById("login-password");
 
-    const password =
-        document.getElementById(
-            "loginPassword"
-        ).value;
-
-
-    if (
-        !email ||
-        !password
-    ) {
-
-        alert(
-            "Please fill all fields."
-        );
-
+    if (!emailInput || !passwordInput) {
+        console.error("❌ Login input elements not found");
+        showMessage("Login form fields not found.");
         return;
-
     }
 
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    // Validation
+    if (!email || !password) {
+        showMessage("Please enter your email and password.");
+        return;
+    }
+
+    console.log("📤 Sending login request to:", `${API_URL}/login`);
 
     try {
 
-        const response =
-            await fetch(
-                "http://0.0.0.0:10000 ",
-                {
+        const response = await fetch(`${API_URL}/login`, {
+            method: "POST",
 
-                    method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-                    headers: {
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
 
-                        "Content-Type":
-                            "application/json"
+        console.log("📥 Login response status:", response.status);
 
-                    },
+        const contentType = response.headers.get("content-type") || "";
 
-                    body:
-                        JSON.stringify({
+        let data;
 
-                            email: email,
-
-                            password: password
-
-                        })
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if (!response.ok) {
-
-            alert(
-                data.detail ||
-                "Login failed."
-            );
-
-            return;
-
+        if (contentType.includes("application/json")) {
+            data = await response.json();
+        } else {
+            data = await response.text();
         }
 
-
-        localStorage.setItem(
-            "access_token",
-            data.access_token
-        );
+        console.log("📥 Login response:", data);
 
 
-        localStorage.setItem(
-            "user",
-            JSON.stringify(
-                data.user
-            )
-        );
+        // SUCCESS
+        if (response.ok) {
 
+            console.log("✅ LOGIN SUCCESS");
 
-        // Remove old meeting ID
-        // when starting a new login session
+            // Find token from common FastAPI response formats
+            const token =
+                data.access_token ||
+                data.token ||
+                data.accessToken;
 
-        localStorage.removeItem(
-            "current_meeting_id"
-        );
+            if (token) {
 
+                // Save JWT token
+                localStorage.setItem("access_token", token);
 
-        window.location.href =
-            "dashboard.html";
+                // Also save as token for compatibility
+                localStorage.setItem("token", token);
 
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Cannot connect to FastAPI."
-        );
-
-    }
-
-}
-
-/* =========================================================
-   HOST / ADMIN SYSTEM
-========================================================= */
-
-let isHost = false;
-
-
-/* =========================================================
-   CHECK HOST ROLE
-========================================================= */
-
-async function checkHostRole() {
-
-    try {
-
-        const response =
-            await fetch(
-                `${API_URL}/meetings/${encodeURIComponent(meetingId)}/role`,
-                {
-
-                    method: "GET",
-
-                    headers: {
-
-                        "Authorization":
-                            `Bearer ${token}`
-
-                    }
-
-                }
-            );
-
-
-        if (!response.ok) {
-
-            console.error(
-                "Could not get meeting role."
-            );
-
-            return;
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        console.log(
-            "Meeting role:",
-            data
-        );
-
-
-        isHost =
-            data.is_host === true;
-
-
-        if (isHost) {
-
-            console.log(
-                "👑 Current user is HOST"
-            );
-
-
-            const adminButton =
-                document.getElementById(
-                    "adminBtn"
-                );
-
-
-            if (adminButton) {
-
-                adminButton.style.display =
-                    "block";
-
+                console.log("✅ JWT token saved");
             }
 
+            // Save user information if returned
+            if (data.user) {
+                localStorage.setItem(
+                    "user",
+                    JSON.stringify(data.user)
+                );
+            }
 
-            showToast(
-                "👑 You are the meeting host"
+            showMessage(
+                data.message ||
+                "Login successful!",
+                "success"
             );
 
-        }
-        else {
-
-            console.log(
-                "👤 Current user is PARTICIPANT"
-            );
-
-        }
-
-    }
-    catch (error) {
-
-        console.error(
-            "Host role error:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   TOGGLE ADMIN PANEL
-========================================================= */
-
-function toggleAdminPanel() {
-
-    if (!isHost) {
-
-        showToast(
-            "Only the host can access these controls."
-        );
-
-        return;
-
-    }
-
-
-    const panel =
-        document.getElementById(
-            "adminPanel"
-        );
-
-
-    if (!panel) {
-
-        return;
-
-    }
-
-
-    panel.classList.toggle(
-        "open"
-    );
-
-}
-
-
-/* =========================================================
-   CLOSE ADMIN PANEL WHEN CLICKING OUTSIDE
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        const panel =
-            document.getElementById(
-                "adminPanel"
-            );
-
-        const button =
-            document.getElementById(
-                "adminBtn"
-            );
-
-
-        if (!panel || !button) {
+            // Redirect after login
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 800);
 
             return;
-
         }
 
 
-        if (
-            panel.classList.contains("open") &&
-            !panel.contains(event.target) &&
-            !button.contains(event.target)
-        ) {
+        // WRONG LOGIN
+        if (response.status === 401) {
 
-            panel.classList.remove(
-                "open"
+            showMessage(
+                data.detail ||
+                "Invalid email or password."
             );
 
+            return;
         }
 
-    }
-);
 
+        // VALIDATION ERROR
+        if (response.status === 422) {
+
+            if (Array.isArray(data.detail)) {
+
+                const errors = data.detail
+                    .map(error => {
+                        return error.msg || "Invalid input";
+                    })
+                    .join("\n");
+
+                showMessage(errors);
+
+            } else {
+
+                showMessage(
+                    data.detail ||
+                    "Invalid login data."
+                );
+            }
+
+            return;
+        }
+
+
+        // SERVER ERROR
+        if (response.status === 500) {
+
+            console.error("❌ FastAPI returned 500:", data);
+
+            showMessage(
+                "FastAPI is connected, but the backend has a server error."
+            );
+
+            return;
+        }
+
+
+        showMessage(
+            data.detail ||
+            data.message ||
+            `Login failed. Server returned ${response.status}.`
+        );
+
+    } catch (error) {
+
+        console.error("❌ LOGIN ERROR:", error);
+
+        showMessage(
+            "FastAPI not connected. Check your internet connection or backend URL."
+        );
+    }
+}
+
+
+// ============================================================
+// LOGOUT
+// ============================================================
+
+function logoutUser() {
+
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    console.log("✅ Logged out");
+
+    window.location.href = "login.html";
+}
+
+
+// ============================================================
+// GET SAVED TOKEN
+// ============================================================
+
+function getToken() {
+    return (
+        localStorage.getItem("access_token") ||
+        localStorage.getItem("token")
+    );
+}
+
+
+// ============================================================
+// CHECK LOGIN STATUS
+// ============================================================
+
+function isLoggedIn() {
+    return !!getToken();
+}
+
+
+// ============================================================
+// TEST FASTAPI WHEN PAGE LOADS
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    console.log("====================================");
+    console.log("NULL MEETING");
+    console.log("FastAPI URL:", API_URL);
+    console.log("====================================");
+
+    const connected = await checkFastAPI();
+
+    if (connected) {
+        console.log("🟢 BACKEND STATUS: CONNECTED");
+    } else {
+        console.log("🔴 BACKEND STATUS: NOT CONNECTED");
+    }
+
+
+    // ========================================================
+    // REGISTER BUTTON
+    // ========================================================
+
+    const registerButton =
+        document.getElementById("registerBtn") ||
+        document.getElementById("register-button") ||
+        document.getElementById("registerButton");
+
+    if (registerButton) {
+
+        registerButton.addEventListener("click", (event) => {
+
+            event.preventDefault();
+
+            registerUser();
+        });
+    }
+
+
+    // ========================================================
+    // LOGIN BUTTON
+    // ========================================================
+
+    const loginButton =
+        document.getElementById("loginBtn") ||
+        document.getElementById("login-button") ||
+        document.getElementById("loginButton");
+
+    if (loginButton) {
+
+        loginButton.addEventListener("click", (event) => {
+
+            event.preventDefault();
+
+            loginUser();
+        });
+    }
+
+
+    // ========================================================
+    // REGISTER FORM SUBMIT
+    // ========================================================
+
+    const registerForm =
+        document.getElementById("registerForm") ||
+        document.querySelector("form");
+
+    if (
+        registerForm &&
+        window.location.pathname.toLowerCase().includes("register")
+    ) {
+
+        registerForm.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            registerUser();
+        });
+    }
+
+
+    // ========================================================
+    // LOGIN FORM SUBMIT
+    // ========================================================
+
+    const loginForm =
+        document.getElementById("loginForm") ||
+        document.querySelector("form");
+
+    if (
+        loginForm &&
+        window.location.pathname.toLowerCase().includes("login")
+    ) {
+
+        loginForm.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            loginUser();
+        });
+    }
+
+});
+```
