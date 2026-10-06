@@ -2648,6 +2648,28 @@ function connectWebSocket() {
                     }
 
 
+                    /*
+                     * Create offers to
+                     * existing participants.
+                     */
+
+                    for (
+                        const participant
+                        of details
+                    ) {
+
+                        setTimeout(
+                            () => {
+
+                                createOfferForParticipant(
+                                    participant.participant_id
+                                );
+
+                            },
+                            300
+                        );
+
+                    }
 
 
                     updateAdminParticipantList(
@@ -2770,14 +2792,6 @@ function connectWebSocket() {
                             message.name ||
                             "Participant"
                         );
-
-                        // The existing participant is the WebRTC offerer.
-                        // This avoids offer/answer glare when both browsers join.
-                        setTimeout(() => {
-                            createOfferForParticipant(
-                                message.participant_id
-                            );
-                        }, 150);
 
                     }
 
