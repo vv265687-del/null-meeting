@@ -43,7 +43,7 @@ def get_room(meeting_id):
         "active": [],
         "waiting": [],
         "locked": False,
-        "waiting_room": True,
+        "waiting_room": False,
         "ended": False,
     })
 
