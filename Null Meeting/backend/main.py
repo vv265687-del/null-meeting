@@ -80,6 +80,10 @@ async def broadcast_active(meeting_id, data, exclude=None):
     room = meeting_rooms.get(meeting_id)
     if not room:
         return
+    print(
+        f"Broadcast {data.get('type')} in {meeting_id}: "
+        f"active={[(p['participant_id'], p['name']) for p in room['active']]}"
+    )
     for p in list(room["active"]):
         if exclude and p["participant_id"] == exclude:
             continue
@@ -144,31 +148,6 @@ async def meeting_websocket(websocket: WebSocket, meeting_id: str):
             await websocket.close(code=1000)
             return
 
-        # One account gets one live participant entry per meeting. A browser
-        # refresh/reconnect can otherwise leave the old socket in the in-memory
-        # room briefly, producing duplicate video cards for the same person.
-        stale_entries = [
-            x for x in (room["active"] + room["waiting"])
-            if x.get("user_id") == user.id
-        ]
-        for stale in stale_entries:
-            if stale in room["active"]:
-                room["active"].remove(stale)
-                await broadcast_active(meeting_id, {
-                    "type": "user_left",
-                    "participant_id": stale["participant_id"],
-                    "user_id": stale["user_id"],
-                    "name": stale["name"],
-                    "is_host": stale["is_host"],
-                    "participants": len(room["active"]),
-                })
-            if stale in room["waiting"]:
-                room["waiting"].remove(stale)
-            try:
-                await stale["websocket"].close(code=4001)
-            except Exception:
-                pass
-
         is_host = meeting.host_id == user.id
         await websocket.accept()
 
@@ -189,8 +168,8 @@ async def meeting_websocket(websocket: WebSocket, meeting_id: str):
             "muted": False,
         }
 
-        # Host always enters immediately. Everyone else uses the waiting room
-        # while it is enabled, or when the host has locked the meeting.
+        # Hosts and participants can enter directly by default.
+        # The host can still enable the waiting room later from the controls.
         must_wait = (not is_host) and (room["waiting_room"] or room["locked"])
 
         if must_wait:
@@ -475,4 +454,4 @@ def join_meeting(data: JoinMeetingRequest, user_id: int = Depends(get_user_id), 
     meeting = db.query(Meeting).filter(Meeting.meeting_id == data.meeting_id).first()
     if not meeting:
         raise HTTPException(status_code=404, detail="Meeting not found")
-    return {"message": "Join request accepted", "meeting": {"meeting_id": meeting.meeting_id, "host_id": meeting.host_id, "joined_user_id": user_id, "waiting_room": True}}
+    return {"message": "Join request accepted", "meeting": {"meeting_id": meeting.meeting_id, "host_id": meeting.host_id, "joined_user_id": user_id, "waiting_room": False}}
